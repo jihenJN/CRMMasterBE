@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="invoice">
+      <h2 data-cy="invoiceDetailsHeading"><span>Invoice</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ invoice.id }}</span>
+        </dd>
+        <dt><span>Discount</span></dt>
+        <dd>
+          <span>{{ invoice.discount }}</span>
+        </dd>
+        <dt><span>Tax</span></dt>
+        <dd>
+          <span>{{ invoice.tax }}</span>
+        </dd>
+        <dt><span>Stamp</span></dt>
+        <dd>
+          <div *ngIf="invoice.stamp">
+            <a (click)="openFile(invoice.stamp, invoice.stampContentType)">
+              <img [src]="'data:' + invoice.stampContentType + ';base64,' + invoice.stamp" style="max-width: 100%" alt="invoice image" />
+            </a>
+            {{ invoice.stampContentType }}, {{ byteSize(invoice.stamp) }}
+          </div>
+        </dd>
+        <dt><span>Date</span></dt>
+        <dd>
+          <span>{{ invoice.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Total</span></dt>
+        <dd>
+          <span>{{ invoice.total }}</span>
+        </dd>
+        <dt><span>Client</span></dt>
+        <dd>
+          <div *ngIf="invoice.client">
+            <a [routerLink]="['/client', invoice.client.id, 'view']">{{ invoice.client.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/invoice', invoice.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

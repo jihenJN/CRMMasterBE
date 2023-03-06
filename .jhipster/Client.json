@@ -1,0 +1,35 @@
+{
+  "changelogDate": "20230306165025",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orders",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "fidelityCard",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Client",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}
