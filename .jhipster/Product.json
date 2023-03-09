@@ -30,6 +30,10 @@
     {
       "fieldName": "supplier",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "tax",
+      "fieldType": "Integer"
     }
   ],
   "name": "Product",

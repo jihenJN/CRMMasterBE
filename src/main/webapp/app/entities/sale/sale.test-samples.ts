@@ -5,13 +5,18 @@ export const sampleWithRequiredData: ISale = {
 };
 
 export const sampleWithPartialData: ISale = {
-  id: 'a8640e7b-3e40-48d5-bbf5-2f2f0387d03b',
-  quantity: 42411,
+  id: '40e7b3e4-08d5-43bf-92f2-f0387d03b622',
+  quantity: 49939,
+  price: 11839,
+  tax: 96402,
 };
 
 export const sampleWithFullData: ISale = {
-  id: '2271f10d-6304-4c90-8a04-6c68a77233f8',
-  quantity: 1694,
+  id: '10d6304c-900a-4046-868a-77233f80c06e',
+  quantity: 63521,
+  price: 75072,
+  tax: 82485,
+  discount: 10854,
 };
 
 export const sampleWithNewData: NewSale = {

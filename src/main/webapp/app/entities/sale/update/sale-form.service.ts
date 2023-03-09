@@ -19,6 +19,9 @@ type SaleFormDefaults = Pick<NewSale, 'id'>;
 type SaleFormGroupContent = {
   id: FormControl<ISale['id'] | NewSale['id']>;
   quantity: FormControl<ISale['quantity']>;
+  price: FormControl<ISale['price']>;
+  tax: FormControl<ISale['tax']>;
+  discount: FormControl<ISale['discount']>;
   invoice: FormControl<ISale['invoice']>;
   product: FormControl<ISale['product']>;
 };
@@ -41,6 +44,9 @@ export class SaleFormService {
         }
       ),
       quantity: new FormControl(saleRawValue.quantity),
+      price: new FormControl(saleRawValue.price),
+      tax: new FormControl(saleRawValue.tax),
+      discount: new FormControl(saleRawValue.discount),
       invoice: new FormControl(saleRawValue.invoice),
       product: new FormControl(saleRawValue.product),
     });

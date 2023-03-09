@@ -22,37 +22,6 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" for="field_stamp">Stamp</label>
-          <div>
-            <img
-              [src]="'data:' + editForm.get('stampContentType')!.value + ';base64,' + editForm.get('stamp')!.value"
-              style="max-height: 100px"
-              *ngIf="editForm.get('stamp')!.value"
-              alt="invoice image"
-            />
-            <div *ngIf="editForm.get('stamp')!.value" class="form-text text-danger clearfix">
-              <span class="pull-start">{{ editForm.get('stampContentType')!.value }}, {{ byteSize(editForm.get('stamp')!.value!) }}</span>
-              <button
-                type="button"
-                (click)="clearInputImage('stamp', 'stampContentType', 'file_stamp')"
-                class="btn btn-secondary btn-xs pull-end"
-              >
-                <fa-icon icon="times"></fa-icon>
-              </button>
-            </div>
-            <input type="file" id="file_stamp" data-cy="stamp" (change)="setFileData($event, 'stamp', true)" accept="image/*" />
-          </div>
-          <input type="hidden" class="form-control" name="stamp" id="field_stamp" data-cy="stamp" formControlName="stamp" />
-          <input
-            type="hidden"
-            class="form-control"
-            name="stampContentType"
-            id="field_stampContentType"
-            formControlName="stampContentType"
-          />
-        </div>
-
-        <div class="row mb-3">
           <label class="form-label" for="field_date">Date</label>
           <div class="d-flex">
             <input
@@ -70,6 +39,11 @@
         <div class="row mb-3">
           <label class="form-label" for="field_total">Total</label>
           <input type="number" class="form-control" name="total" id="field_total" data-cy="total" formControlName="total" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_stamp">Stamp</label>
+          <input type="number" class="form-control" name="stamp" id="field_stamp" data-cy="stamp" formControlName="stamp" />
         </div>
 
         <div class="row mb-3">

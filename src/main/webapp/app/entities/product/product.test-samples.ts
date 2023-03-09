@@ -5,24 +5,25 @@ export const sampleWithRequiredData: IProduct = {
 };
 
 export const sampleWithPartialData: IProduct = {
-  id: '05732e9c-d253-4153-be3a-45b5084beccd',
-  name: 'intuitive SDR',
-  price: 76296,
+  id: '5732e9cd-2531-453f-a3a4-5b5084beccd5',
+  name: 'Tuna Marketing',
+  price: 11062,
   favorite: false,
-  stars: 22265,
-  supplier: 'structure lime',
+  stars: 46649,
+  supplier: 'calculate',
 };
 
 export const sampleWithFullData: IProduct = {
-  id: '76a4568a-63e8-45ba-bd43-5b43af8bb9bb',
-  name: 'Mobility generating National',
-  price: 39081,
+  id: 'b776a456-8a63-4e85-babd-435b43af8bb9',
+  name: 'Pound copy Account',
+  price: 33057,
   photo: '../fake-data/blob/hipster.png',
   photoContentType: 'unknown',
   favorite: true,
-  description: 'Rapid',
-  stars: 42945,
-  supplier: 'Legacy',
+  description: 'backing Iraqi',
+  stars: 30005,
+  supplier: 'system harness Clothing',
+  tax: 9868,
 };
 
 export const sampleWithNewData: NewProduct = {

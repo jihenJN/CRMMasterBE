@@ -25,17 +25,14 @@ public class Invoice implements Serializable {
     @Field("tax")
     private Double tax;
 
-    @Field("stamp")
-    private byte[] stamp;
-
-    @Field("stamp_content_type")
-    private String stampContentType;
-
     @Field("date")
     private ZonedDateTime date;
 
     @Field("total")
     private Double total;
+
+    @Field("stamp")
+    private Integer stamp;
 
     @DBRef
     @Field("client")
@@ -82,32 +79,6 @@ public class Invoice implements Serializable {
         this.tax = tax;
     }
 
-    public byte[] getStamp() {
-        return this.stamp;
-    }
-
-    public Invoice stamp(byte[] stamp) {
-        this.setStamp(stamp);
-        return this;
-    }
-
-    public void setStamp(byte[] stamp) {
-        this.stamp = stamp;
-    }
-
-    public String getStampContentType() {
-        return this.stampContentType;
-    }
-
-    public Invoice stampContentType(String stampContentType) {
-        this.stampContentType = stampContentType;
-        return this;
-    }
-
-    public void setStampContentType(String stampContentType) {
-        this.stampContentType = stampContentType;
-    }
-
     public ZonedDateTime getDate() {
         return this.date;
     }
@@ -132,6 +103,19 @@ public class Invoice implements Serializable {
 
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public Integer getStamp() {
+        return this.stamp;
+    }
+
+    public Invoice stamp(Integer stamp) {
+        this.setStamp(stamp);
+        return this;
+    }
+
+    public void setStamp(Integer stamp) {
+        this.stamp = stamp;
     }
 
     public Client getClient() {
@@ -173,10 +157,9 @@ public class Invoice implements Serializable {
             "id=" + getId() +
             ", discount=" + getDiscount() +
             ", tax=" + getTax() +
-            ", stamp='" + getStamp() + "'" +
-            ", stampContentType='" + getStampContentType() + "'" +
             ", date='" + getDate() + "'" +
             ", total=" + getTotal() +
+            ", stamp=" + getStamp() +
             "}";
     }
 }

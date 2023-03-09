@@ -33,10 +33,9 @@ type InvoiceFormGroupContent = {
   id: FormControl<InvoiceFormRawValue['id'] | NewInvoice['id']>;
   discount: FormControl<InvoiceFormRawValue['discount']>;
   tax: FormControl<InvoiceFormRawValue['tax']>;
-  stamp: FormControl<InvoiceFormRawValue['stamp']>;
-  stampContentType: FormControl<InvoiceFormRawValue['stampContentType']>;
   date: FormControl<InvoiceFormRawValue['date']>;
   total: FormControl<InvoiceFormRawValue['total']>;
+  stamp: FormControl<InvoiceFormRawValue['stamp']>;
   client: FormControl<InvoiceFormRawValue['client']>;
 };
 
@@ -59,10 +58,9 @@ export class InvoiceFormService {
       ),
       discount: new FormControl(invoiceRawValue.discount),
       tax: new FormControl(invoiceRawValue.tax),
-      stamp: new FormControl(invoiceRawValue.stamp),
-      stampContentType: new FormControl(invoiceRawValue.stampContentType),
       date: new FormControl(invoiceRawValue.date),
       total: new FormControl(invoiceRawValue.total),
+      stamp: new FormControl(invoiceRawValue.stamp),
       client: new FormControl(invoiceRawValue.client),
     });
   }

@@ -22,9 +22,9 @@ describe('Invoice Form Service', () => {
             id: expect.any(Object),
             discount: expect.any(Object),
             tax: expect.any(Object),
-            stamp: expect.any(Object),
             date: expect.any(Object),
             total: expect.any(Object),
+            stamp: expect.any(Object),
             client: expect.any(Object),
           })
         );
@@ -38,9 +38,9 @@ describe('Invoice Form Service', () => {
             id: expect.any(Object),
             discount: expect.any(Object),
             tax: expect.any(Object),
-            stamp: expect.any(Object),
             date: expect.any(Object),
             total: expect.any(Object),
+            stamp: expect.any(Object),
             client: expect.any(Object),
           })
         );

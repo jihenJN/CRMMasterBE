@@ -5,10 +5,9 @@ export interface IInvoice {
   id: string;
   discount?: number | null;
   tax?: number | null;
-  stamp?: string | null;
-  stampContentType?: string | null;
   date?: dayjs.Dayjs | null;
   total?: number | null;
+  stamp?: number | null;
   client?: Pick<IClient, 'id'> | null;
 }
 

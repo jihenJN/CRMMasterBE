@@ -22,6 +22,15 @@ public class Sale implements Serializable {
     @Field("quantity")
     private Integer quantity;
 
+    @Field("price")
+    private Float price;
+
+    @Field("tax")
+    private Integer tax;
+
+    @Field("discount")
+    private Float discount;
+
     @DBRef
     @Field("invoice")
     @JsonIgnoreProperties(value = { "client" }, allowSetters = true)
@@ -57,6 +66,45 @@ public class Sale implements Serializable {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Float getPrice() {
+        return this.price;
+    }
+
+    public Sale price(Float price) {
+        this.setPrice(price);
+        return this;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public Integer getTax() {
+        return this.tax;
+    }
+
+    public Sale tax(Integer tax) {
+        this.setTax(tax);
+        return this;
+    }
+
+    public void setTax(Integer tax) {
+        this.tax = tax;
+    }
+
+    public Float getDiscount() {
+        return this.discount;
+    }
+
+    public Sale discount(Float discount) {
+        this.setDiscount(discount);
+        return this;
+    }
+
+    public void setDiscount(Float discount) {
+        this.discount = discount;
     }
 
     public Invoice getInvoice() {
@@ -110,6 +158,9 @@ public class Sale implements Serializable {
         return "Sale{" +
             "id=" + getId() +
             ", quantity=" + getQuantity() +
+            ", price=" + getPrice() +
+            ", tax=" + getTax() +
+            ", discount=" + getDiscount() +
             "}";
     }
 }

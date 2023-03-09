@@ -50,12 +50,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="stamp">
-            <div class="d-flex">
-              <span>Stamp</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="date">
             <div class="d-flex">
               <span>Date</span>
@@ -65,6 +59,12 @@
           <th scope="col" jhiSortBy="total">
             <div class="d-flex">
               <span>Total</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="stamp">
+            <div class="d-flex">
+              <span>Stamp</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -84,14 +84,9 @@
           </td>
           <td>{{ invoice.discount }}</td>
           <td>{{ invoice.tax }}</td>
-          <td>
-            <a *ngIf="invoice.stamp" (click)="openFile(invoice.stamp, invoice.stampContentType)">
-              <img [src]="'data:' + invoice.stampContentType + ';base64,' + invoice.stamp" style="max-height: 30px" alt="invoice image" />
-            </a>
-            <span *ngIf="invoice.stamp">{{ invoice.stampContentType }}, {{ byteSize(invoice.stamp) }}</span>
-          </td>
           <td>{{ invoice.date | formatMediumDatetime }}</td>
           <td>{{ invoice.total }}</td>
+          <td>{{ invoice.stamp }}</td>
           <td>
             <div *ngIf="invoice.client">
               <a [routerLink]="['/client', invoice.client.id, 'view']">{{ invoice.client.id }}</a>

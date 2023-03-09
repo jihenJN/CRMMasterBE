@@ -13,6 +13,12 @@ public class SaleDTO implements Serializable {
 
     private Integer quantity;
 
+    private Float price;
+
+    private Integer tax;
+
+    private Float discount;
+
     private InvoiceDTO invoice;
 
     private ProductDTO product;
@@ -31,6 +37,30 @@ public class SaleDTO implements Serializable {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public Integer getTax() {
+        return tax;
+    }
+
+    public void setTax(Integer tax) {
+        this.tax = tax;
+    }
+
+    public Float getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Float discount) {
+        this.discount = discount;
     }
 
     public InvoiceDTO getInvoice() {
@@ -76,6 +106,9 @@ public class SaleDTO implements Serializable {
         return "SaleDTO{" +
             "id='" + getId() + "'" +
             ", quantity=" + getQuantity() +
+            ", price=" + getPrice() +
+            ", tax=" + getTax() +
+            ", discount=" + getDiscount() +
             ", invoice=" + getInvoice() +
             ", product=" + getProduct() +
             "}";

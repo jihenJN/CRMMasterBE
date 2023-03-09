@@ -16,12 +16,11 @@ public class InvoiceDTO implements Serializable {
 
     private Double tax;
 
-    private byte[] stamp;
-
-    private String stampContentType;
     private ZonedDateTime date;
 
     private Double total;
+
+    private Integer stamp;
 
     private ClientDTO client;
 
@@ -49,22 +48,6 @@ public class InvoiceDTO implements Serializable {
         this.tax = tax;
     }
 
-    public byte[] getStamp() {
-        return stamp;
-    }
-
-    public void setStamp(byte[] stamp) {
-        this.stamp = stamp;
-    }
-
-    public String getStampContentType() {
-        return stampContentType;
-    }
-
-    public void setStampContentType(String stampContentType) {
-        this.stampContentType = stampContentType;
-    }
-
     public ZonedDateTime getDate() {
         return date;
     }
@@ -79,6 +62,14 @@ public class InvoiceDTO implements Serializable {
 
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public Integer getStamp() {
+        return stamp;
+    }
+
+    public void setStamp(Integer stamp) {
+        this.stamp = stamp;
     }
 
     public ClientDTO getClient() {
@@ -117,9 +108,9 @@ public class InvoiceDTO implements Serializable {
             "id='" + getId() + "'" +
             ", discount=" + getDiscount() +
             ", tax=" + getTax() +
-            ", stamp='" + getStamp() + "'" +
             ", date='" + getDate() + "'" +
             ", total=" + getTotal() +
+            ", stamp=" + getStamp() +
             ", client=" + getClient() +
             "}";
     }

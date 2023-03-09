@@ -44,6 +44,24 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="price">
+            <div class="d-flex">
+              <span>Price</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tax">
+            <div class="d-flex">
+              <span>Tax</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="discount">
+            <div class="d-flex">
+              <span>Discount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="invoice.id">
             <div class="d-flex">
               <span>Invoice</span>
@@ -65,6 +83,9 @@
             <a [routerLink]="['/sale', sale.id, 'view']">{{ sale.id }}</a>
           </td>
           <td>{{ sale.quantity }}</td>
+          <td>{{ sale.price }}</td>
+          <td>{{ sale.tax }}</td>
+          <td>{{ sale.discount }}</td>
           <td>
             <div *ngIf="sale.invoice">
               <a [routerLink]="['/invoice', sale.invoice.id, 'view']">{{ sale.invoice.id }}</a>

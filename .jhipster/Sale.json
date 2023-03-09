@@ -5,6 +5,18 @@
     {
       "fieldName": "quantity",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "tax",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "discount",
+      "fieldType": "Float"
     }
   ],
   "name": "Sale",

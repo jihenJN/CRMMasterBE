@@ -26,6 +26,7 @@ type ProductFormGroupContent = {
   description: FormControl<IProduct['description']>;
   stars: FormControl<IProduct['stars']>;
   supplier: FormControl<IProduct['supplier']>;
+  tax: FormControl<IProduct['tax']>;
 };
 
 export type ProductFormGroup = FormGroup<ProductFormGroupContent>;
@@ -53,6 +54,7 @@ export class ProductFormService {
       description: new FormControl(productRawValue.description),
       stars: new FormControl(productRawValue.stars),
       supplier: new FormControl(productRawValue.supplier),
+      tax: new FormControl(productRawValue.tax),
     });
   }
 

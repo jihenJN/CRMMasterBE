@@ -26,6 +26,8 @@ public class ProductDTO implements Serializable {
 
     private String supplier;
 
+    private Integer tax;
+
     public String getId() {
         return id;
     }
@@ -98,6 +100,14 @@ public class ProductDTO implements Serializable {
         this.supplier = supplier;
     }
 
+    public Integer getTax() {
+        return tax;
+    }
+
+    public void setTax(Integer tax) {
+        this.tax = tax;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -131,6 +141,7 @@ public class ProductDTO implements Serializable {
             ", description='" + getDescription() + "'" +
             ", stars=" + getStars() +
             ", supplier='" + getSupplier() + "'" +
+            ", tax=" + getTax() +
             "}";
     }
 }

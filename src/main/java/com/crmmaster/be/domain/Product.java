@@ -41,6 +41,9 @@ public class Product implements Serializable {
     @Field("supplier")
     private String supplier;
 
+    @Field("tax")
+    private Integer tax;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public String getId() {
@@ -160,6 +163,19 @@ public class Product implements Serializable {
         this.supplier = supplier;
     }
 
+    public Integer getTax() {
+        return this.tax;
+    }
+
+    public Product tax(Integer tax) {
+        this.setTax(tax);
+        return this;
+    }
+
+    public void setTax(Integer tax) {
+        this.tax = tax;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -192,6 +208,7 @@ public class Product implements Serializable {
             ", description='" + getDescription() + "'" +
             ", stars=" + getStars() +
             ", supplier='" + getSupplier() + "'" +
+            ", tax=" + getTax() +
             "}";
     }
 }

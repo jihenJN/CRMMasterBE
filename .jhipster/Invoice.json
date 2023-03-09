@@ -11,17 +11,16 @@
       "fieldType": "Double"
     },
     {
-      "fieldName": "stamp",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "image"
-    },
-    {
       "fieldName": "date",
       "fieldType": "ZonedDateTime"
     },
     {
       "fieldName": "total",
       "fieldType": "Double"
+    },
+    {
+      "fieldName": "stamp",
+      "fieldType": "Integer"
     }
   ],
   "name": "Invoice",

@@ -18,6 +18,18 @@
         <dd>
           <span>{{ sale.quantity }}</span>
         </dd>
+        <dt><span>Price</span></dt>
+        <dd>
+          <span>{{ sale.price }}</span>
+        </dd>
+        <dt><span>Tax</span></dt>
+        <dd>
+          <span>{{ sale.tax }}</span>
+        </dd>
+        <dt><span>Discount</span></dt>
+        <dd>
+          <span>{{ sale.discount }}</span>
+        </dd>
         <dt><span>Invoice</span></dt>
         <dd>
           <div *ngIf="sale.invoice">

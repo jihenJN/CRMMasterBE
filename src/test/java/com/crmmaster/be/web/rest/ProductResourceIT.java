@@ -52,6 +52,9 @@ class ProductResourceIT {
     private static final String DEFAULT_SUPPLIER = "AAAAAAAAAA";
     private static final String UPDATED_SUPPLIER = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_TAX = 1;
+    private static final Integer UPDATED_TAX = 2;
+
     private static final String ENTITY_API_URL = "/api/products";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -81,7 +84,8 @@ class ProductResourceIT {
             .favorite(DEFAULT_FAVORITE)
             .description(DEFAULT_DESCRIPTION)
             .stars(DEFAULT_STARS)
-            .supplier(DEFAULT_SUPPLIER);
+            .supplier(DEFAULT_SUPPLIER)
+            .tax(DEFAULT_TAX);
         return product;
     }
 
@@ -100,7 +104,8 @@ class ProductResourceIT {
             .favorite(UPDATED_FAVORITE)
             .description(UPDATED_DESCRIPTION)
             .stars(UPDATED_STARS)
-            .supplier(UPDATED_SUPPLIER);
+            .supplier(UPDATED_SUPPLIER)
+            .tax(UPDATED_TAX);
         return product;
     }
 
@@ -131,6 +136,7 @@ class ProductResourceIT {
         assertThat(testProduct.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testProduct.getStars()).isEqualTo(DEFAULT_STARS);
         assertThat(testProduct.getSupplier()).isEqualTo(DEFAULT_SUPPLIER);
+        assertThat(testProduct.getTax()).isEqualTo(DEFAULT_TAX);
     }
 
     @Test
@@ -169,7 +175,8 @@ class ProductResourceIT {
             .andExpect(jsonPath("$.[*].favorite").value(hasItem(DEFAULT_FAVORITE.booleanValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].stars").value(hasItem(DEFAULT_STARS)))
-            .andExpect(jsonPath("$.[*].supplier").value(hasItem(DEFAULT_SUPPLIER)));
+            .andExpect(jsonPath("$.[*].supplier").value(hasItem(DEFAULT_SUPPLIER)))
+            .andExpect(jsonPath("$.[*].tax").value(hasItem(DEFAULT_TAX)));
     }
 
     @Test
@@ -190,7 +197,8 @@ class ProductResourceIT {
             .andExpect(jsonPath("$.favorite").value(DEFAULT_FAVORITE.booleanValue()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.stars").value(DEFAULT_STARS))
-            .andExpect(jsonPath("$.supplier").value(DEFAULT_SUPPLIER));
+            .andExpect(jsonPath("$.supplier").value(DEFAULT_SUPPLIER))
+            .andExpect(jsonPath("$.tax").value(DEFAULT_TAX));
     }
 
     @Test
@@ -216,7 +224,8 @@ class ProductResourceIT {
             .favorite(UPDATED_FAVORITE)
             .description(UPDATED_DESCRIPTION)
             .stars(UPDATED_STARS)
-            .supplier(UPDATED_SUPPLIER);
+            .supplier(UPDATED_SUPPLIER)
+            .tax(UPDATED_TAX);
         ProductDTO productDTO = productMapper.toDto(updatedProduct);
 
         restProductMockMvc
@@ -239,6 +248,7 @@ class ProductResourceIT {
         assertThat(testProduct.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testProduct.getStars()).isEqualTo(UPDATED_STARS);
         assertThat(testProduct.getSupplier()).isEqualTo(UPDATED_SUPPLIER);
+        assertThat(testProduct.getTax()).isEqualTo(UPDATED_TAX);
     }
 
     @Test
@@ -336,6 +346,7 @@ class ProductResourceIT {
         assertThat(testProduct.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testProduct.getStars()).isEqualTo(UPDATED_STARS);
         assertThat(testProduct.getSupplier()).isEqualTo(DEFAULT_SUPPLIER);
+        assertThat(testProduct.getTax()).isEqualTo(DEFAULT_TAX);
     }
 
     @Test
@@ -357,7 +368,8 @@ class ProductResourceIT {
             .favorite(UPDATED_FAVORITE)
             .description(UPDATED_DESCRIPTION)
             .stars(UPDATED_STARS)
-            .supplier(UPDATED_SUPPLIER);
+            .supplier(UPDATED_SUPPLIER)
+            .tax(UPDATED_TAX);
 
         restProductMockMvc
             .perform(
@@ -379,6 +391,7 @@ class ProductResourceIT {
         assertThat(testProduct.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testProduct.getStars()).isEqualTo(UPDATED_STARS);
         assertThat(testProduct.getSupplier()).isEqualTo(UPDATED_SUPPLIER);
+        assertThat(testProduct.getTax()).isEqualTo(UPDATED_TAX);
     }
 
     @Test

@@ -41,6 +41,15 @@ class SaleResourceIT {
     private static final Integer DEFAULT_QUANTITY = 1;
     private static final Integer UPDATED_QUANTITY = 2;
 
+    private static final Float DEFAULT_PRICE = 1F;
+    private static final Float UPDATED_PRICE = 2F;
+
+    private static final Integer DEFAULT_TAX = 1;
+    private static final Integer UPDATED_TAX = 2;
+
+    private static final Float DEFAULT_DISCOUNT = 1F;
+    private static final Float UPDATED_DISCOUNT = 2F;
+
     private static final String ENTITY_API_URL = "/api/sales";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -68,7 +77,7 @@ class SaleResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Sale createEntity() {
-        Sale sale = new Sale().quantity(DEFAULT_QUANTITY);
+        Sale sale = new Sale().quantity(DEFAULT_QUANTITY).price(DEFAULT_PRICE).tax(DEFAULT_TAX).discount(DEFAULT_DISCOUNT);
         return sale;
     }
 
@@ -79,7 +88,7 @@ class SaleResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Sale createUpdatedEntity() {
-        Sale sale = new Sale().quantity(UPDATED_QUANTITY);
+        Sale sale = new Sale().quantity(UPDATED_QUANTITY).price(UPDATED_PRICE).tax(UPDATED_TAX).discount(UPDATED_DISCOUNT);
         return sale;
     }
 
@@ -103,6 +112,9 @@ class SaleResourceIT {
         assertThat(saleList).hasSize(databaseSizeBeforeCreate + 1);
         Sale testSale = saleList.get(saleList.size() - 1);
         assertThat(testSale.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
+        assertThat(testSale.getPrice()).isEqualTo(DEFAULT_PRICE);
+        assertThat(testSale.getTax()).isEqualTo(DEFAULT_TAX);
+        assertThat(testSale.getDiscount()).isEqualTo(DEFAULT_DISCOUNT);
     }
 
     @Test
@@ -134,7 +146,10 @@ class SaleResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(sale.getId())))
-            .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)));
+            .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
+            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
+            .andExpect(jsonPath("$.[*].tax").value(hasItem(DEFAULT_TAX)))
+            .andExpect(jsonPath("$.[*].discount").value(hasItem(DEFAULT_DISCOUNT.doubleValue())));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -165,7 +180,10 @@ class SaleResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(sale.getId()))
-            .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY));
+            .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
+            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
+            .andExpect(jsonPath("$.tax").value(DEFAULT_TAX))
+            .andExpect(jsonPath("$.discount").value(DEFAULT_DISCOUNT.doubleValue()));
     }
 
     @Test
@@ -183,7 +201,7 @@ class SaleResourceIT {
 
         // Update the sale
         Sale updatedSale = saleRepository.findById(sale.getId()).get();
-        updatedSale.quantity(UPDATED_QUANTITY);
+        updatedSale.quantity(UPDATED_QUANTITY).price(UPDATED_PRICE).tax(UPDATED_TAX).discount(UPDATED_DISCOUNT);
         SaleDTO saleDTO = saleMapper.toDto(updatedSale);
 
         restSaleMockMvc
@@ -199,6 +217,9 @@ class SaleResourceIT {
         assertThat(saleList).hasSize(databaseSizeBeforeUpdate);
         Sale testSale = saleList.get(saleList.size() - 1);
         assertThat(testSale.getQuantity()).isEqualTo(UPDATED_QUANTITY);
+        assertThat(testSale.getPrice()).isEqualTo(UPDATED_PRICE);
+        assertThat(testSale.getTax()).isEqualTo(UPDATED_TAX);
+        assertThat(testSale.getDiscount()).isEqualTo(UPDATED_DISCOUNT);
     }
 
     @Test
@@ -274,6 +295,8 @@ class SaleResourceIT {
         Sale partialUpdatedSale = new Sale();
         partialUpdatedSale.setId(sale.getId());
 
+        partialUpdatedSale.price(UPDATED_PRICE).tax(UPDATED_TAX).discount(UPDATED_DISCOUNT);
+
         restSaleMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedSale.getId())
@@ -287,6 +310,9 @@ class SaleResourceIT {
         assertThat(saleList).hasSize(databaseSizeBeforeUpdate);
         Sale testSale = saleList.get(saleList.size() - 1);
         assertThat(testSale.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
+        assertThat(testSale.getPrice()).isEqualTo(UPDATED_PRICE);
+        assertThat(testSale.getTax()).isEqualTo(UPDATED_TAX);
+        assertThat(testSale.getDiscount()).isEqualTo(UPDATED_DISCOUNT);
     }
 
     @Test
@@ -300,7 +326,7 @@ class SaleResourceIT {
         Sale partialUpdatedSale = new Sale();
         partialUpdatedSale.setId(sale.getId());
 
-        partialUpdatedSale.quantity(UPDATED_QUANTITY);
+        partialUpdatedSale.quantity(UPDATED_QUANTITY).price(UPDATED_PRICE).tax(UPDATED_TAX).discount(UPDATED_DISCOUNT);
 
         restSaleMockMvc
             .perform(
@@ -315,6 +341,9 @@ class SaleResourceIT {
         assertThat(saleList).hasSize(databaseSizeBeforeUpdate);
         Sale testSale = saleList.get(saleList.size() - 1);
         assertThat(testSale.getQuantity()).isEqualTo(UPDATED_QUANTITY);
+        assertThat(testSale.getPrice()).isEqualTo(UPDATED_PRICE);
+        assertThat(testSale.getTax()).isEqualTo(UPDATED_TAX);
+        assertThat(testSale.getDiscount()).isEqualTo(UPDATED_DISCOUNT);
     }
 
     @Test

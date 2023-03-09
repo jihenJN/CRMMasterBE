@@ -21,6 +21,9 @@ describe('Sale Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             quantity: expect.any(Object),
+            price: expect.any(Object),
+            tax: expect.any(Object),
+            discount: expect.any(Object),
             invoice: expect.any(Object),
             product: expect.any(Object),
           })
@@ -34,6 +37,9 @@ describe('Sale Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             quantity: expect.any(Object),
+            price: expect.any(Object),
+            tax: expect.any(Object),
+            discount: expect.any(Object),
             invoice: expect.any(Object),
             product: expect.any(Object),
           })

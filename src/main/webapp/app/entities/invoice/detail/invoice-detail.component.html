@@ -22,15 +22,6 @@
         <dd>
           <span>{{ invoice.tax }}</span>
         </dd>
-        <dt><span>Stamp</span></dt>
-        <dd>
-          <div *ngIf="invoice.stamp">
-            <a (click)="openFile(invoice.stamp, invoice.stampContentType)">
-              <img [src]="'data:' + invoice.stampContentType + ';base64,' + invoice.stamp" style="max-width: 100%" alt="invoice image" />
-            </a>
-            {{ invoice.stampContentType }}, {{ byteSize(invoice.stamp) }}
-          </div>
-        </dd>
         <dt><span>Date</span></dt>
         <dd>
           <span>{{ invoice.date | formatMediumDatetime }}</span>
@@ -38,6 +29,10 @@
         <dt><span>Total</span></dt>
         <dd>
           <span>{{ invoice.total }}</span>
+        </dd>
+        <dt><span>Stamp</span></dt>
+        <dd>
+          <span>{{ invoice.stamp }}</span>
         </dd>
         <dt><span>Client</span></dt>
         <dd>

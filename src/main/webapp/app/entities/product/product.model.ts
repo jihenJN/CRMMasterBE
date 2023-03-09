@@ -8,6 +8,7 @@ export interface IProduct {
   description?: string | null;
   stars?: number | null;
   supplier?: string | null;
+  tax?: number | null;
 }
 
 export type NewProduct = Omit<IProduct, 'id'> & { id: null };

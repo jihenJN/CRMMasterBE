@@ -27,6 +27,7 @@ describe('Product Form Service', () => {
             description: expect.any(Object),
             stars: expect.any(Object),
             supplier: expect.any(Object),
+            tax: expect.any(Object),
           })
         );
       });
@@ -44,6 +45,7 @@ describe('Product Form Service', () => {
             description: expect.any(Object),
             stars: expect.any(Object),
             supplier: expect.any(Object),
+            tax: expect.any(Object),
           })
         );
       });
