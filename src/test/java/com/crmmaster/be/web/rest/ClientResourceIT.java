@@ -40,12 +40,6 @@ class ClientResourceIT {
     private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_ORDERS = 1;
-    private static final Integer UPDATED_ORDERS = 2;
-
-    private static final Boolean DEFAULT_FIDELITY_CARD = false;
-    private static final Boolean UPDATED_FIDELITY_CARD = true;
-
     private static final String ENTITY_API_URL = "/api/clients";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -67,13 +61,7 @@ class ClientResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Client createEntity() {
-        Client client = new Client()
-            .name(DEFAULT_NAME)
-            .phone(DEFAULT_PHONE)
-            .address(DEFAULT_ADDRESS)
-            .email(DEFAULT_EMAIL)
-            .orders(DEFAULT_ORDERS)
-            .fidelityCard(DEFAULT_FIDELITY_CARD);
+        Client client = new Client().name(DEFAULT_NAME).phone(DEFAULT_PHONE).address(DEFAULT_ADDRESS).email(DEFAULT_EMAIL);
         return client;
     }
 
@@ -84,13 +72,7 @@ class ClientResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Client createUpdatedEntity() {
-        Client client = new Client()
-            .name(UPDATED_NAME)
-            .phone(UPDATED_PHONE)
-            .address(UPDATED_ADDRESS)
-            .email(UPDATED_EMAIL)
-            .orders(UPDATED_ORDERS)
-            .fidelityCard(UPDATED_FIDELITY_CARD);
+        Client client = new Client().name(UPDATED_NAME).phone(UPDATED_PHONE).address(UPDATED_ADDRESS).email(UPDATED_EMAIL);
         return client;
     }
 
@@ -117,8 +99,6 @@ class ClientResourceIT {
         assertThat(testClient.getPhone()).isEqualTo(DEFAULT_PHONE);
         assertThat(testClient.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testClient.getEmail()).isEqualTo(DEFAULT_EMAIL);
-        assertThat(testClient.getOrders()).isEqualTo(DEFAULT_ORDERS);
-        assertThat(testClient.getFidelityCard()).isEqualTo(DEFAULT_FIDELITY_CARD);
     }
 
     @Test
@@ -153,9 +133,7 @@ class ClientResourceIT {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE)))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
-            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
-            .andExpect(jsonPath("$.[*].orders").value(hasItem(DEFAULT_ORDERS)))
-            .andExpect(jsonPath("$.[*].fidelityCard").value(hasItem(DEFAULT_FIDELITY_CARD.booleanValue())));
+            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)));
     }
 
     @Test
@@ -172,9 +150,7 @@ class ClientResourceIT {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
-            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
-            .andExpect(jsonPath("$.orders").value(DEFAULT_ORDERS))
-            .andExpect(jsonPath("$.fidelityCard").value(DEFAULT_FIDELITY_CARD.booleanValue()));
+            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL));
     }
 
     @Test
@@ -192,13 +168,7 @@ class ClientResourceIT {
 
         // Update the client
         Client updatedClient = clientRepository.findById(client.getId()).get();
-        updatedClient
-            .name(UPDATED_NAME)
-            .phone(UPDATED_PHONE)
-            .address(UPDATED_ADDRESS)
-            .email(UPDATED_EMAIL)
-            .orders(UPDATED_ORDERS)
-            .fidelityCard(UPDATED_FIDELITY_CARD);
+        updatedClient.name(UPDATED_NAME).phone(UPDATED_PHONE).address(UPDATED_ADDRESS).email(UPDATED_EMAIL);
         ClientDTO clientDTO = clientMapper.toDto(updatedClient);
 
         restClientMockMvc
@@ -217,8 +187,6 @@ class ClientResourceIT {
         assertThat(testClient.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testClient.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testClient.getEmail()).isEqualTo(UPDATED_EMAIL);
-        assertThat(testClient.getOrders()).isEqualTo(UPDATED_ORDERS);
-        assertThat(testClient.getFidelityCard()).isEqualTo(UPDATED_FIDELITY_CARD);
     }
 
     @Test
@@ -312,8 +280,6 @@ class ClientResourceIT {
         assertThat(testClient.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testClient.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testClient.getEmail()).isEqualTo(DEFAULT_EMAIL);
-        assertThat(testClient.getOrders()).isEqualTo(DEFAULT_ORDERS);
-        assertThat(testClient.getFidelityCard()).isEqualTo(DEFAULT_FIDELITY_CARD);
     }
 
     @Test
@@ -327,13 +293,7 @@ class ClientResourceIT {
         Client partialUpdatedClient = new Client();
         partialUpdatedClient.setId(client.getId());
 
-        partialUpdatedClient
-            .name(UPDATED_NAME)
-            .phone(UPDATED_PHONE)
-            .address(UPDATED_ADDRESS)
-            .email(UPDATED_EMAIL)
-            .orders(UPDATED_ORDERS)
-            .fidelityCard(UPDATED_FIDELITY_CARD);
+        partialUpdatedClient.name(UPDATED_NAME).phone(UPDATED_PHONE).address(UPDATED_ADDRESS).email(UPDATED_EMAIL);
 
         restClientMockMvc
             .perform(
@@ -351,8 +311,6 @@ class ClientResourceIT {
         assertThat(testClient.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testClient.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testClient.getEmail()).isEqualTo(UPDATED_EMAIL);
-        assertThat(testClient.getOrders()).isEqualTo(UPDATED_ORDERS);
-        assertThat(testClient.getFidelityCard()).isEqualTo(UPDATED_FIDELITY_CARD);
     }
 
     @Test

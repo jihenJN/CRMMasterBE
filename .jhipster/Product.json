@@ -16,19 +16,7 @@
       "fieldTypeBlobContent": "image"
     },
     {
-      "fieldName": "favorite",
-      "fieldType": "Boolean"
-    },
-    {
       "fieldName": "description",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "stars",
-      "fieldType": "Integer"
-    },
-    {
-      "fieldName": "supplier",
       "fieldType": "String"
     },
     {

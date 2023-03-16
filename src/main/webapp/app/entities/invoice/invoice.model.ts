@@ -8,6 +8,7 @@ export interface IInvoice {
   date?: dayjs.Dayjs | null;
   total?: number | null;
   stamp?: number | null;
+  remarks?: string | null;
   client?: Pick<IClient, 'id'> | null;
 }
 

@@ -5,25 +5,20 @@ export const sampleWithRequiredData: IProduct = {
 };
 
 export const sampleWithPartialData: IProduct = {
-  id: '5732e9cd-2531-453f-a3a4-5b5084beccd5',
-  name: 'Tuna Marketing',
+  id: 'eb05732e-9cd2-4531-93fe-3a45b5084bec',
+  name: 'copying Tuna Marketing',
   price: 11062,
-  favorite: false,
-  stars: 46649,
-  supplier: 'calculate',
+  description: 'Groves',
 };
 
 export const sampleWithFullData: IProduct = {
-  id: 'b776a456-8a63-4e85-babd-435b43af8bb9',
-  name: 'Pound copy Account',
-  price: 33057,
+  id: 'a3b776a4-568a-463e-85ba-bd435b43af8b',
+  name: 'Account parse service-desk',
+  price: 17196,
   photo: '../fake-data/blob/hipster.png',
   photoContentType: 'unknown',
-  favorite: true,
-  description: 'backing Iraqi',
-  stars: 30005,
-  supplier: 'system harness Clothing',
-  tax: 9868,
+  description: 'orchestration backing Iraqi',
+  tax: 30005,
 };
 
 export const sampleWithNewData: NewProduct = {

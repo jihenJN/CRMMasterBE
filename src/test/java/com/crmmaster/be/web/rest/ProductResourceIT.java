@@ -40,17 +40,8 @@ class ProductResourceIT {
     private static final String DEFAULT_PHOTO_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_PHOTO_CONTENT_TYPE = "image/png";
 
-    private static final Boolean DEFAULT_FAVORITE = false;
-    private static final Boolean UPDATED_FAVORITE = true;
-
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_STARS = 1;
-    private static final Integer UPDATED_STARS = 2;
-
-    private static final String DEFAULT_SUPPLIER = "AAAAAAAAAA";
-    private static final String UPDATED_SUPPLIER = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_TAX = 1;
     private static final Integer UPDATED_TAX = 2;
@@ -81,10 +72,7 @@ class ProductResourceIT {
             .price(DEFAULT_PRICE)
             .photo(DEFAULT_PHOTO)
             .photoContentType(DEFAULT_PHOTO_CONTENT_TYPE)
-            .favorite(DEFAULT_FAVORITE)
             .description(DEFAULT_DESCRIPTION)
-            .stars(DEFAULT_STARS)
-            .supplier(DEFAULT_SUPPLIER)
             .tax(DEFAULT_TAX);
         return product;
     }
@@ -101,10 +89,7 @@ class ProductResourceIT {
             .price(UPDATED_PRICE)
             .photo(UPDATED_PHOTO)
             .photoContentType(UPDATED_PHOTO_CONTENT_TYPE)
-            .favorite(UPDATED_FAVORITE)
             .description(UPDATED_DESCRIPTION)
-            .stars(UPDATED_STARS)
-            .supplier(UPDATED_SUPPLIER)
             .tax(UPDATED_TAX);
         return product;
     }
@@ -132,10 +117,7 @@ class ProductResourceIT {
         assertThat(testProduct.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testProduct.getPhoto()).isEqualTo(DEFAULT_PHOTO);
         assertThat(testProduct.getPhotoContentType()).isEqualTo(DEFAULT_PHOTO_CONTENT_TYPE);
-        assertThat(testProduct.getFavorite()).isEqualTo(DEFAULT_FAVORITE);
         assertThat(testProduct.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testProduct.getStars()).isEqualTo(DEFAULT_STARS);
-        assertThat(testProduct.getSupplier()).isEqualTo(DEFAULT_SUPPLIER);
         assertThat(testProduct.getTax()).isEqualTo(DEFAULT_TAX);
     }
 
@@ -172,10 +154,7 @@ class ProductResourceIT {
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].photoContentType").value(hasItem(DEFAULT_PHOTO_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].photo").value(hasItem(Base64Utils.encodeToString(DEFAULT_PHOTO))))
-            .andExpect(jsonPath("$.[*].favorite").value(hasItem(DEFAULT_FAVORITE.booleanValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].stars").value(hasItem(DEFAULT_STARS)))
-            .andExpect(jsonPath("$.[*].supplier").value(hasItem(DEFAULT_SUPPLIER)))
             .andExpect(jsonPath("$.[*].tax").value(hasItem(DEFAULT_TAX)));
     }
 
@@ -194,10 +173,7 @@ class ProductResourceIT {
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
             .andExpect(jsonPath("$.photoContentType").value(DEFAULT_PHOTO_CONTENT_TYPE))
             .andExpect(jsonPath("$.photo").value(Base64Utils.encodeToString(DEFAULT_PHOTO)))
-            .andExpect(jsonPath("$.favorite").value(DEFAULT_FAVORITE.booleanValue()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.stars").value(DEFAULT_STARS))
-            .andExpect(jsonPath("$.supplier").value(DEFAULT_SUPPLIER))
             .andExpect(jsonPath("$.tax").value(DEFAULT_TAX));
     }
 
@@ -221,10 +197,7 @@ class ProductResourceIT {
             .price(UPDATED_PRICE)
             .photo(UPDATED_PHOTO)
             .photoContentType(UPDATED_PHOTO_CONTENT_TYPE)
-            .favorite(UPDATED_FAVORITE)
             .description(UPDATED_DESCRIPTION)
-            .stars(UPDATED_STARS)
-            .supplier(UPDATED_SUPPLIER)
             .tax(UPDATED_TAX);
         ProductDTO productDTO = productMapper.toDto(updatedProduct);
 
@@ -244,10 +217,7 @@ class ProductResourceIT {
         assertThat(testProduct.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testProduct.getPhoto()).isEqualTo(UPDATED_PHOTO);
         assertThat(testProduct.getPhotoContentType()).isEqualTo(UPDATED_PHOTO_CONTENT_TYPE);
-        assertThat(testProduct.getFavorite()).isEqualTo(UPDATED_FAVORITE);
         assertThat(testProduct.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testProduct.getStars()).isEqualTo(UPDATED_STARS);
-        assertThat(testProduct.getSupplier()).isEqualTo(UPDATED_SUPPLIER);
         assertThat(testProduct.getTax()).isEqualTo(UPDATED_TAX);
     }
 
@@ -324,7 +294,7 @@ class ProductResourceIT {
         Product partialUpdatedProduct = new Product();
         partialUpdatedProduct.setId(product.getId());
 
-        partialUpdatedProduct.description(UPDATED_DESCRIPTION).stars(UPDATED_STARS);
+        partialUpdatedProduct.tax(UPDATED_TAX);
 
         restProductMockMvc
             .perform(
@@ -342,11 +312,8 @@ class ProductResourceIT {
         assertThat(testProduct.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testProduct.getPhoto()).isEqualTo(DEFAULT_PHOTO);
         assertThat(testProduct.getPhotoContentType()).isEqualTo(DEFAULT_PHOTO_CONTENT_TYPE);
-        assertThat(testProduct.getFavorite()).isEqualTo(DEFAULT_FAVORITE);
-        assertThat(testProduct.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testProduct.getStars()).isEqualTo(UPDATED_STARS);
-        assertThat(testProduct.getSupplier()).isEqualTo(DEFAULT_SUPPLIER);
-        assertThat(testProduct.getTax()).isEqualTo(DEFAULT_TAX);
+        assertThat(testProduct.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testProduct.getTax()).isEqualTo(UPDATED_TAX);
     }
 
     @Test
@@ -365,10 +332,7 @@ class ProductResourceIT {
             .price(UPDATED_PRICE)
             .photo(UPDATED_PHOTO)
             .photoContentType(UPDATED_PHOTO_CONTENT_TYPE)
-            .favorite(UPDATED_FAVORITE)
             .description(UPDATED_DESCRIPTION)
-            .stars(UPDATED_STARS)
-            .supplier(UPDATED_SUPPLIER)
             .tax(UPDATED_TAX);
 
         restProductMockMvc
@@ -387,10 +351,7 @@ class ProductResourceIT {
         assertThat(testProduct.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testProduct.getPhoto()).isEqualTo(UPDATED_PHOTO);
         assertThat(testProduct.getPhotoContentType()).isEqualTo(UPDATED_PHOTO_CONTENT_TYPE);
-        assertThat(testProduct.getFavorite()).isEqualTo(UPDATED_FAVORITE);
         assertThat(testProduct.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testProduct.getStars()).isEqualTo(UPDATED_STARS);
-        assertThat(testProduct.getSupplier()).isEqualTo(UPDATED_SUPPLIER);
         assertThat(testProduct.getTax()).isEqualTo(UPDATED_TAX);
     }
 

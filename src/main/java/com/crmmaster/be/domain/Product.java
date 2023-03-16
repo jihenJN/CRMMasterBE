@@ -29,17 +29,8 @@ public class Product implements Serializable {
     @Field("photo_content_type")
     private String photoContentType;
 
-    @Field("favorite")
-    private Boolean favorite;
-
     @Field("description")
     private String description;
-
-    @Field("stars")
-    private Integer stars;
-
-    @Field("supplier")
-    private String supplier;
 
     @Field("tax")
     private Integer tax;
@@ -111,19 +102,6 @@ public class Product implements Serializable {
         this.photoContentType = photoContentType;
     }
 
-    public Boolean getFavorite() {
-        return this.favorite;
-    }
-
-    public Product favorite(Boolean favorite) {
-        this.setFavorite(favorite);
-        return this;
-    }
-
-    public void setFavorite(Boolean favorite) {
-        this.favorite = favorite;
-    }
-
     public String getDescription() {
         return this.description;
     }
@@ -135,32 +113,6 @@ public class Product implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Integer getStars() {
-        return this.stars;
-    }
-
-    public Product stars(Integer stars) {
-        this.setStars(stars);
-        return this;
-    }
-
-    public void setStars(Integer stars) {
-        this.stars = stars;
-    }
-
-    public String getSupplier() {
-        return this.supplier;
-    }
-
-    public Product supplier(String supplier) {
-        this.setSupplier(supplier);
-        return this;
-    }
-
-    public void setSupplier(String supplier) {
-        this.supplier = supplier;
     }
 
     public Integer getTax() {
@@ -204,10 +156,7 @@ public class Product implements Serializable {
             ", price=" + getPrice() +
             ", photo='" + getPhoto() + "'" +
             ", photoContentType='" + getPhotoContentType() + "'" +
-            ", favorite='" + getFavorite() + "'" +
             ", description='" + getDescription() + "'" +
-            ", stars=" + getStars() +
-            ", supplier='" + getSupplier() + "'" +
             ", tax=" + getTax() +
             "}";
     }

@@ -22,8 +22,8 @@ type SaleFormGroupContent = {
   price: FormControl<ISale['price']>;
   tax: FormControl<ISale['tax']>;
   discount: FormControl<ISale['discount']>;
-  invoice: FormControl<ISale['invoice']>;
   product: FormControl<ISale['product']>;
+  invoice: FormControl<ISale['invoice']>;
 };
 
 export type SaleFormGroup = FormGroup<SaleFormGroupContent>;
@@ -47,8 +47,8 @@ export class SaleFormService {
       price: new FormControl(saleRawValue.price),
       tax: new FormControl(saleRawValue.tax),
       discount: new FormControl(saleRawValue.discount),
-      invoice: new FormControl(saleRawValue.invoice),
       product: new FormControl(saleRawValue.product),
+      invoice: new FormControl(saleRawValue.invoice),
     });
   }
 

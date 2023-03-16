@@ -13,18 +13,18 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface SaleMapper extends EntityMapper<SaleDTO, Sale> {
-    @Mapping(target = "invoice", source = "invoice", qualifiedByName = "invoiceId")
     @Mapping(target = "product", source = "product", qualifiedByName = "productName")
+    @Mapping(target = "invoice", source = "invoice", qualifiedByName = "invoiceId")
     SaleDTO toDto(Sale s);
-
-    @Named("invoiceId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
-    InvoiceDTO toDtoInvoiceId(Invoice invoice);
 
     @Named("productName")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "name")
     ProductDTO toDtoProductName(Product product);
+
+    @Named("invoiceId")
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "id", source = "id")
+    InvoiceDTO toDtoInvoiceId(Invoice invoice);
 }

@@ -9,10 +9,10 @@ import { of, Subject, from } from 'rxjs';
 import { SaleFormService } from './sale-form.service';
 import { SaleService } from '../service/sale.service';
 import { ISale } from '../sale.model';
-import { IInvoice } from 'app/entities/invoice/invoice.model';
-import { InvoiceService } from 'app/entities/invoice/service/invoice.service';
 import { IProduct } from 'app/entities/product/product.model';
 import { ProductService } from 'app/entities/product/service/product.service';
+import { IInvoice } from 'app/entities/invoice/invoice.model';
+import { InvoiceService } from 'app/entities/invoice/service/invoice.service';
 
 import { SaleUpdateComponent } from './sale-update.component';
 
@@ -22,8 +22,8 @@ describe('Sale Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let saleFormService: SaleFormService;
   let saleService: SaleService;
-  let invoiceService: InvoiceService;
   let productService: ProductService;
+  let invoiceService: InvoiceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -46,35 +46,13 @@ describe('Sale Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     saleFormService = TestBed.inject(SaleFormService);
     saleService = TestBed.inject(SaleService);
-    invoiceService = TestBed.inject(InvoiceService);
     productService = TestBed.inject(ProductService);
+    invoiceService = TestBed.inject(InvoiceService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call Invoice query and add missing value', () => {
-      const sale: ISale = { id: 'CBA' };
-      const invoice: IInvoice = { id: '8f856556-39d1-4747-8ba2-3e6cb19f0b07' };
-      sale.invoice = invoice;
-
-      const invoiceCollection: IInvoice[] = [{ id: 'f91ae246-0621-4900-9d5b-6938e19b08ad' }];
-      jest.spyOn(invoiceService, 'query').mockReturnValue(of(new HttpResponse({ body: invoiceCollection })));
-      const additionalInvoices = [invoice];
-      const expectedCollection: IInvoice[] = [...additionalInvoices, ...invoiceCollection];
-      jest.spyOn(invoiceService, 'addInvoiceToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ sale });
-      comp.ngOnInit();
-
-      expect(invoiceService.query).toHaveBeenCalled();
-      expect(invoiceService.addInvoiceToCollectionIfMissing).toHaveBeenCalledWith(
-        invoiceCollection,
-        ...additionalInvoices.map(expect.objectContaining)
-      );
-      expect(comp.invoicesSharedCollection).toEqual(expectedCollection);
-    });
-
     it('Should call Product query and add missing value', () => {
       const sale: ISale = { id: 'CBA' };
       const product: IProduct = { id: 'b8e32048-c476-4abe-b892-79f973f89ccd' };
@@ -97,18 +75,40 @@ describe('Sale Management Update Component', () => {
       expect(comp.productsSharedCollection).toEqual(expectedCollection);
     });
 
-    it('Should update editForm', () => {
+    it('Should call Invoice query and add missing value', () => {
       const sale: ISale = { id: 'CBA' };
-      const invoice: IInvoice = { id: '19aad749-aee5-402c-9fee-473c2b37739a' };
+      const invoice: IInvoice = { id: '8f856556-39d1-4747-8ba2-3e6cb19f0b07' };
       sale.invoice = invoice;
-      const product: IProduct = { id: 'deeb8fa3-f389-468d-a351-d8a520693237' };
-      sale.product = product;
+
+      const invoiceCollection: IInvoice[] = [{ id: 'f91ae246-0621-4900-9d5b-6938e19b08ad' }];
+      jest.spyOn(invoiceService, 'query').mockReturnValue(of(new HttpResponse({ body: invoiceCollection })));
+      const additionalInvoices = [invoice];
+      const expectedCollection: IInvoice[] = [...additionalInvoices, ...invoiceCollection];
+      jest.spyOn(invoiceService, 'addInvoiceToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ sale });
       comp.ngOnInit();
 
-      expect(comp.invoicesSharedCollection).toContain(invoice);
+      expect(invoiceService.query).toHaveBeenCalled();
+      expect(invoiceService.addInvoiceToCollectionIfMissing).toHaveBeenCalledWith(
+        invoiceCollection,
+        ...additionalInvoices.map(expect.objectContaining)
+      );
+      expect(comp.invoicesSharedCollection).toEqual(expectedCollection);
+    });
+
+    it('Should update editForm', () => {
+      const sale: ISale = { id: 'CBA' };
+      const product: IProduct = { id: 'deeb8fa3-f389-468d-a351-d8a520693237' };
+      sale.product = product;
+      const invoice: IInvoice = { id: '19aad749-aee5-402c-9fee-473c2b37739a' };
+      sale.invoice = invoice;
+
+      activatedRoute.data = of({ sale });
+      comp.ngOnInit();
+
       expect(comp.productsSharedCollection).toContain(product);
+      expect(comp.invoicesSharedCollection).toContain(invoice);
       expect(comp.sale).toEqual(sale);
     });
   });
@@ -182,16 +182,6 @@ describe('Sale Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
-    describe('compareInvoice', () => {
-      it('Should forward to invoiceService', () => {
-        const entity = { id: 'ABC' };
-        const entity2 = { id: 'CBA' };
-        jest.spyOn(invoiceService, 'compareInvoice');
-        comp.compareInvoice(entity, entity2);
-        expect(invoiceService.compareInvoice).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
     describe('compareProduct', () => {
       it('Should forward to productService', () => {
         const entity = { id: 'ABC' };
@@ -199,6 +189,16 @@ describe('Sale Management Update Component', () => {
         jest.spyOn(productService, 'compareProduct');
         comp.compareProduct(entity, entity2);
         expect(productService.compareProduct).toHaveBeenCalledWith(entity, entity2);
+      });
+    });
+
+    describe('compareInvoice', () => {
+      it('Should forward to invoiceService', () => {
+        const entity = { id: 'ABC' };
+        const entity2 = { id: 'CBA' };
+        jest.spyOn(invoiceService, 'compareInvoice');
+        comp.compareInvoice(entity, entity2);
+        expect(invoiceService.compareInvoice).toHaveBeenCalledWith(entity, entity2);
       });
     });
   });

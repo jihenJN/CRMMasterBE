@@ -56,27 +56,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="favorite">
-            <div class="d-flex">
-              <span>Favorite</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="description">
             <div class="d-flex">
               <span>Description</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="stars">
-            <div class="d-flex">
-              <span>Stars</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="supplier">
-            <div class="d-flex">
-              <span>Supplier</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -102,10 +84,7 @@
             </a>
             <span *ngIf="product.photo">{{ product.photoContentType }}, {{ byteSize(product.photo) }}</span>
           </td>
-          <td>{{ product.favorite }}</td>
           <td>{{ product.description }}</td>
-          <td>{{ product.stars }}</td>
-          <td>{{ product.supplier }}</td>
           <td>{{ product.tax }}</td>
           <td class="text-end">
             <div class="btn-group">

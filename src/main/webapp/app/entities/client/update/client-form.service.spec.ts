@@ -24,8 +24,6 @@ describe('Client Form Service', () => {
             phone: expect.any(Object),
             address: expect.any(Object),
             email: expect.any(Object),
-            orders: expect.any(Object),
-            fidelityCard: expect.any(Object),
           })
         );
       });
@@ -40,8 +38,6 @@ describe('Client Form Service', () => {
             phone: expect.any(Object),
             address: expect.any(Object),
             email: expect.any(Object),
-            orders: expect.any(Object),
-            fidelityCard: expect.any(Object),
           })
         );
       });

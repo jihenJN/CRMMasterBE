@@ -18,13 +18,7 @@ public class ProductDTO implements Serializable {
     private byte[] photo;
 
     private String photoContentType;
-    private Boolean favorite;
-
     private String description;
-
-    private Integer stars;
-
-    private String supplier;
 
     private Integer tax;
 
@@ -68,36 +62,12 @@ public class ProductDTO implements Serializable {
         this.photoContentType = photoContentType;
     }
 
-    public Boolean getFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(Boolean favorite) {
-        this.favorite = favorite;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Integer getStars() {
-        return stars;
-    }
-
-    public void setStars(Integer stars) {
-        this.stars = stars;
-    }
-
-    public String getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(String supplier) {
-        this.supplier = supplier;
     }
 
     public Integer getTax() {
@@ -137,10 +107,7 @@ public class ProductDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", price=" + getPrice() +
             ", photo='" + getPhoto() + "'" +
-            ", favorite='" + getFavorite() + "'" +
             ", description='" + getDescription() + "'" +
-            ", stars=" + getStars() +
-            ", supplier='" + getSupplier() + "'" +
             ", tax=" + getTax() +
             "}";
     }

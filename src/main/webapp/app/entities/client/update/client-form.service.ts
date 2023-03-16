@@ -14,7 +14,7 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type ClientFormGroupInput = IClient | PartialWithRequiredKeyOf<NewClient>;
 
-type ClientFormDefaults = Pick<NewClient, 'id' | 'fidelityCard'>;
+type ClientFormDefaults = Pick<NewClient, 'id'>;
 
 type ClientFormGroupContent = {
   id: FormControl<IClient['id'] | NewClient['id']>;
@@ -22,8 +22,6 @@ type ClientFormGroupContent = {
   phone: FormControl<IClient['phone']>;
   address: FormControl<IClient['address']>;
   email: FormControl<IClient['email']>;
-  orders: FormControl<IClient['orders']>;
-  fidelityCard: FormControl<IClient['fidelityCard']>;
 };
 
 export type ClientFormGroup = FormGroup<ClientFormGroupContent>;
@@ -47,8 +45,6 @@ export class ClientFormService {
       phone: new FormControl(clientRawValue.phone),
       address: new FormControl(clientRawValue.address),
       email: new FormControl(clientRawValue.email),
-      orders: new FormControl(clientRawValue.orders),
-      fidelityCard: new FormControl(clientRawValue.fidelityCard),
     });
   }
 
@@ -69,7 +65,6 @@ export class ClientFormService {
   private getFormDefaults(): ClientFormDefaults {
     return {
       id: null,
-      fidelityCard: false,
     };
   }
 }

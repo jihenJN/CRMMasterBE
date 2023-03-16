@@ -62,15 +62,15 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="invoice.id">
-            <div class="d-flex">
-              <span>Invoice</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="product.name">
             <div class="d-flex">
               <span>Product</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="invoice.id">
+            <div class="d-flex">
+              <span>Invoice</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -87,13 +87,13 @@
           <td>{{ sale.tax }}</td>
           <td>{{ sale.discount }}</td>
           <td>
-            <div *ngIf="sale.invoice">
-              <a [routerLink]="['/invoice', sale.invoice.id, 'view']">{{ sale.invoice.id }}</a>
+            <div *ngIf="sale.product">
+              <a [routerLink]="['/product', sale.product.id, 'view']">{{ sale.product.name }}</a>
             </div>
           </td>
           <td>
-            <div *ngIf="sale.product">
-              <a [routerLink]="['/product', sale.product.id, 'view']">{{ sale.product.name }}</a>
+            <div *ngIf="sale.invoice">
+              <a [routerLink]="['/invoice', sale.invoice.id, 'view']">{{ sale.invoice.id }}</a>
             </div>
           </td>
           <td class="text-end">

@@ -29,12 +29,6 @@ public class Client implements Serializable {
     @Field("email")
     private String email;
 
-    @Field("orders")
-    private Integer orders;
-
-    @Field("fidelity_card")
-    private Boolean fidelityCard;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public String getId() {
@@ -102,32 +96,6 @@ public class Client implements Serializable {
         this.email = email;
     }
 
-    public Integer getOrders() {
-        return this.orders;
-    }
-
-    public Client orders(Integer orders) {
-        this.setOrders(orders);
-        return this;
-    }
-
-    public void setOrders(Integer orders) {
-        this.orders = orders;
-    }
-
-    public Boolean getFidelityCard() {
-        return this.fidelityCard;
-    }
-
-    public Client fidelityCard(Boolean fidelityCard) {
-        this.setFidelityCard(fidelityCard);
-        return this;
-    }
-
-    public void setFidelityCard(Boolean fidelityCard) {
-        this.fidelityCard = fidelityCard;
-    }
-
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -156,8 +124,6 @@ public class Client implements Serializable {
             ", phone=" + getPhone() +
             ", address='" + getAddress() + "'" +
             ", email='" + getEmail() + "'" +
-            ", orders=" + getOrders() +
-            ", fidelityCard='" + getFidelityCard() + "'" +
             "}";
     }
 }

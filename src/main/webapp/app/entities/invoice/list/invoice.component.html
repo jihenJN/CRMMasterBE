@@ -68,6 +68,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="remarks">
+            <div class="d-flex">
+              <span>Remarks</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="client.id">
             <div class="d-flex">
               <span>Client</span>
@@ -87,6 +93,7 @@
           <td>{{ invoice.date | formatMediumDatetime }}</td>
           <td>{{ invoice.total }}</td>
           <td>{{ invoice.stamp }}</td>
+          <td>{{ invoice.remarks }}</td>
           <td>
             <div *ngIf="invoice.client">
               <a [routerLink]="['/client', invoice.client.id, 'view']">{{ invoice.client.id }}</a>

@@ -4,10 +4,7 @@ export interface IProduct {
   price?: number | null;
   photo?: string | null;
   photoContentType?: string | null;
-  favorite?: boolean | null;
   description?: string | null;
-  stars?: number | null;
-  supplier?: string | null;
   tax?: number | null;
 }
 

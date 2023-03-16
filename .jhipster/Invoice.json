@@ -21,6 +21,10 @@
     {
       "fieldName": "stamp",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "remarks",
+      "fieldType": "String"
     }
   ],
   "name": "Invoice",
@@ -30,8 +34,10 @@
     {
       "otherEntityField": "id",
       "otherEntityName": "client",
+      "otherEntityRelationshipName": "invoice",
+      "ownerSide": true,
       "relationshipName": "client",
-      "relationshipType": "many-to-one"
+      "relationshipType": "one-to-one"
     }
   ],
   "service": "serviceClass"

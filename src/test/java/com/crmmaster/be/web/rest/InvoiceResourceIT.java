@@ -48,6 +48,9 @@ class InvoiceResourceIT {
     private static final Integer DEFAULT_STAMP = 1;
     private static final Integer UPDATED_STAMP = 2;
 
+    private static final String DEFAULT_REMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_REMARKS = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/invoices";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -74,7 +77,8 @@ class InvoiceResourceIT {
             .tax(DEFAULT_TAX)
             .date(DEFAULT_DATE)
             .total(DEFAULT_TOTAL)
-            .stamp(DEFAULT_STAMP);
+            .stamp(DEFAULT_STAMP)
+            .remarks(DEFAULT_REMARKS);
         return invoice;
     }
 
@@ -90,7 +94,8 @@ class InvoiceResourceIT {
             .tax(UPDATED_TAX)
             .date(UPDATED_DATE)
             .total(UPDATED_TOTAL)
-            .stamp(UPDATED_STAMP);
+            .stamp(UPDATED_STAMP)
+            .remarks(UPDATED_REMARKS);
         return invoice;
     }
 
@@ -118,6 +123,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testInvoice.getTotal()).isEqualTo(DEFAULT_TOTAL);
         assertThat(testInvoice.getStamp()).isEqualTo(DEFAULT_STAMP);
+        assertThat(testInvoice.getRemarks()).isEqualTo(DEFAULT_REMARKS);
     }
 
     @Test
@@ -153,7 +159,8 @@ class InvoiceResourceIT {
             .andExpect(jsonPath("$.[*].tax").value(hasItem(DEFAULT_TAX.doubleValue())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
             .andExpect(jsonPath("$.[*].total").value(hasItem(DEFAULT_TOTAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].stamp").value(hasItem(DEFAULT_STAMP)));
+            .andExpect(jsonPath("$.[*].stamp").value(hasItem(DEFAULT_STAMP)))
+            .andExpect(jsonPath("$.[*].remarks").value(hasItem(DEFAULT_REMARKS)));
     }
 
     @Test
@@ -171,7 +178,8 @@ class InvoiceResourceIT {
             .andExpect(jsonPath("$.tax").value(DEFAULT_TAX.doubleValue()))
             .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)))
             .andExpect(jsonPath("$.total").value(DEFAULT_TOTAL.doubleValue()))
-            .andExpect(jsonPath("$.stamp").value(DEFAULT_STAMP));
+            .andExpect(jsonPath("$.stamp").value(DEFAULT_STAMP))
+            .andExpect(jsonPath("$.remarks").value(DEFAULT_REMARKS));
     }
 
     @Test
@@ -189,7 +197,13 @@ class InvoiceResourceIT {
 
         // Update the invoice
         Invoice updatedInvoice = invoiceRepository.findById(invoice.getId()).get();
-        updatedInvoice.discount(UPDATED_DISCOUNT).tax(UPDATED_TAX).date(UPDATED_DATE).total(UPDATED_TOTAL).stamp(UPDATED_STAMP);
+        updatedInvoice
+            .discount(UPDATED_DISCOUNT)
+            .tax(UPDATED_TAX)
+            .date(UPDATED_DATE)
+            .total(UPDATED_TOTAL)
+            .stamp(UPDATED_STAMP)
+            .remarks(UPDATED_REMARKS);
         InvoiceDTO invoiceDTO = invoiceMapper.toDto(updatedInvoice);
 
         restInvoiceMockMvc
@@ -209,6 +223,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testInvoice.getTotal()).isEqualTo(UPDATED_TOTAL);
         assertThat(testInvoice.getStamp()).isEqualTo(UPDATED_STAMP);
+        assertThat(testInvoice.getRemarks()).isEqualTo(UPDATED_REMARKS);
     }
 
     @Test
@@ -303,6 +318,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testInvoice.getTotal()).isEqualTo(UPDATED_TOTAL);
         assertThat(testInvoice.getStamp()).isEqualTo(UPDATED_STAMP);
+        assertThat(testInvoice.getRemarks()).isEqualTo(DEFAULT_REMARKS);
     }
 
     @Test
@@ -316,7 +332,13 @@ class InvoiceResourceIT {
         Invoice partialUpdatedInvoice = new Invoice();
         partialUpdatedInvoice.setId(invoice.getId());
 
-        partialUpdatedInvoice.discount(UPDATED_DISCOUNT).tax(UPDATED_TAX).date(UPDATED_DATE).total(UPDATED_TOTAL).stamp(UPDATED_STAMP);
+        partialUpdatedInvoice
+            .discount(UPDATED_DISCOUNT)
+            .tax(UPDATED_TAX)
+            .date(UPDATED_DATE)
+            .total(UPDATED_TOTAL)
+            .stamp(UPDATED_STAMP)
+            .remarks(UPDATED_REMARKS);
 
         restInvoiceMockMvc
             .perform(
@@ -335,6 +357,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testInvoice.getTotal()).isEqualTo(UPDATED_TOTAL);
         assertThat(testInvoice.getStamp()).isEqualTo(UPDATED_STAMP);
+        assertThat(testInvoice.getRemarks()).isEqualTo(UPDATED_REMARKS);
     }
 
     @Test

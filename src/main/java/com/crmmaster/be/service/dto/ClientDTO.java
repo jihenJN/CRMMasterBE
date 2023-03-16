@@ -19,10 +19,6 @@ public class ClientDTO implements Serializable {
 
     private String email;
 
-    private Integer orders;
-
-    private Boolean fidelityCard;
-
     public String getId() {
         return id;
     }
@@ -63,22 +59,6 @@ public class ClientDTO implements Serializable {
         this.email = email;
     }
 
-    public Integer getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Integer orders) {
-        this.orders = orders;
-    }
-
-    public Boolean getFidelityCard() {
-        return fidelityCard;
-    }
-
-    public void setFidelityCard(Boolean fidelityCard) {
-        this.fidelityCard = fidelityCard;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -109,8 +89,6 @@ public class ClientDTO implements Serializable {
             ", phone=" + getPhone() +
             ", address='" + getAddress() + "'" +
             ", email='" + getEmail() + "'" +
-            ", orders=" + getOrders() +
-            ", fidelityCard='" + getFidelityCard() + "'" +
             "}";
     }
 }

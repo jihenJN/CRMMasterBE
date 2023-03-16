@@ -19,9 +19,9 @@ public class SaleDTO implements Serializable {
 
     private Float discount;
 
-    private InvoiceDTO invoice;
-
     private ProductDTO product;
+
+    private InvoiceDTO invoice;
 
     public String getId() {
         return id;
@@ -63,20 +63,20 @@ public class SaleDTO implements Serializable {
         this.discount = discount;
     }
 
-    public InvoiceDTO getInvoice() {
-        return invoice;
-    }
-
-    public void setInvoice(InvoiceDTO invoice) {
-        this.invoice = invoice;
-    }
-
     public ProductDTO getProduct() {
         return product;
     }
 
     public void setProduct(ProductDTO product) {
         this.product = product;
+    }
+
+    public InvoiceDTO getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(InvoiceDTO invoice) {
+        this.invoice = invoice;
     }
 
     @Override
@@ -109,8 +109,8 @@ public class SaleDTO implements Serializable {
             ", price=" + getPrice() +
             ", tax=" + getTax() +
             ", discount=" + getDiscount() +
-            ", invoice=" + getInvoice() +
             ", product=" + getProduct() +
+            ", invoice=" + getInvoice() +
             "}";
     }
 }

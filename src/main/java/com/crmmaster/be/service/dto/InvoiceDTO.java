@@ -22,6 +22,8 @@ public class InvoiceDTO implements Serializable {
 
     private Integer stamp;
 
+    private String remarks;
+
     private ClientDTO client;
 
     public String getId() {
@@ -72,6 +74,14 @@ public class InvoiceDTO implements Serializable {
         this.stamp = stamp;
     }
 
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
     public ClientDTO getClient() {
         return client;
     }
@@ -111,6 +121,7 @@ public class InvoiceDTO implements Serializable {
             ", date='" + getDate() + "'" +
             ", total=" + getTotal() +
             ", stamp=" + getStamp() +
+            ", remarks='" + getRemarks() + "'" +
             ", client=" + getClient() +
             "}";
     }

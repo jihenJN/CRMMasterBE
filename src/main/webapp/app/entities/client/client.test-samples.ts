@@ -5,22 +5,19 @@ export const sampleWithRequiredData: IClient = {
 };
 
 export const sampleWithPartialData: IClient = {
-  id: '03cc4180-b6c6-43fd-8759-1621bc0e7263',
-  name: 'input',
-  phone: 32535,
-  address: 'contextually-based',
-  email: 'Tina_Bednar71@gmail.com',
-  orders: 3723,
+  id: 'b403cc41-80b6-4c63-bdc7-591621bc0e72',
+  name: 'yellow monitor',
+  phone: 27216,
+  address: 'Synergized',
+  email: 'Anais_Stiedemann@hotmail.com',
 };
 
 export const sampleWithFullData: IClient = {
-  id: 'de8bf54c-72cd-4838-bfbd-32ffde4b2213',
-  name: 'Borders',
-  phone: 21556,
-  address: 'e-commerce',
-  email: 'Adrienne64@hotmail.com',
-  orders: 64510,
-  fidelityCard: true,
+  id: '0de8bf54-c72c-4d83-83fb-d32ffde4b221',
+  name: 'Shoes',
+  phone: 52368,
+  address: 'violet',
+  email: 'Zachery13@gmail.com',
 };
 
 export const sampleWithNewData: NewClient = {

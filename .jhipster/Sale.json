@@ -24,18 +24,18 @@
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityField": "id",
-      "otherEntityName": "invoice",
-      "relationshipName": "invoice",
-      "relationshipType": "many-to-one"
-    },
-    {
       "otherEntityField": "name",
       "otherEntityName": "product",
       "otherEntityRelationshipName": "sale",
       "ownerSide": true,
       "relationshipName": "product",
       "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "invoice",
+      "relationshipName": "invoice",
+      "relationshipType": "many-to-one"
     }
   ],
   "service": "serviceClass"

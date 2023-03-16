@@ -34,6 +34,9 @@ public class Invoice implements Serializable {
     @Field("stamp")
     private Integer stamp;
 
+    @Field("remarks")
+    private String remarks;
+
     @DBRef
     @Field("client")
     private Client client;
@@ -118,6 +121,19 @@ public class Invoice implements Serializable {
         this.stamp = stamp;
     }
 
+    public String getRemarks() {
+        return this.remarks;
+    }
+
+    public Invoice remarks(String remarks) {
+        this.setRemarks(remarks);
+        return this;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
     public Client getClient() {
         return this.client;
     }
@@ -160,6 +176,7 @@ public class Invoice implements Serializable {
             ", date='" + getDate() + "'" +
             ", total=" + getTotal() +
             ", stamp=" + getStamp() +
+            ", remarks='" + getRemarks() + "'" +
             "}";
     }
 }

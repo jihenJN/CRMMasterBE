@@ -17,14 +17,6 @@
     {
       "fieldName": "email",
       "fieldType": "String"
-    },
-    {
-      "fieldName": "orders",
-      "fieldType": "Integer"
-    },
-    {
-      "fieldName": "fidelityCard",
-      "fieldType": "Boolean"
     }
   ],
   "name": "Client",
