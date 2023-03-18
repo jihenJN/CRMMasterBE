@@ -10,6 +10,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -86,6 +88,15 @@ public class InvoiceService {
     }
 
     /**
+     * Get all the invoices with eager load of many-to-many relationships.
+     *
+     * @return the list of entities.
+     */
+    public Page<InvoiceDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return invoiceRepository.findAllWithEagerRelationships(pageable).map(invoiceMapper::toDto);
+    }
+
+    /**
      * Get one invoice by id.
      *
      * @param id the id of the entity.
@@ -93,7 +104,7 @@ public class InvoiceService {
      */
     public Optional<InvoiceDTO> findOne(String id) {
         log.debug("Request to get Invoice : {}", id);
-        return invoiceRepository.findById(id).map(invoiceMapper::toDto);
+        return invoiceRepository.findOneWithEagerRelationships(id).map(invoiceMapper::toDto);
     }
 
     /**

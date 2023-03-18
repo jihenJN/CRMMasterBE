@@ -20,27 +20,30 @@ public class Invoice implements Serializable {
     @Id
     private String id;
 
+    @NotNull
+    @Field("code")
+    private String code;
+
+    @Field("date")
+    private ZonedDateTime date;
+
     @Field("discount")
     private Double discount;
 
     @Field("tax")
-    private Double tax;
-
-    @Field("date")
-    private ZonedDateTime date;
+    private Integer tax;
 
     @Field("total")
     private Double total;
 
     @Field("stamp")
-    private Integer stamp;
+    private byte[] stamp;
+
+    @Field("stamp_content_type")
+    private String stampContentType;
 
     @Field("remarks")
     private String remarks;
-
-    @NotNull
-    @Field("code")
-    private String code;
 
     @DBRef
     @Field("client")
@@ -61,30 +64,17 @@ public class Invoice implements Serializable {
         this.id = id;
     }
 
-    public Double getDiscount() {
-        return this.discount;
+    public String getCode() {
+        return this.code;
     }
 
-    public Invoice discount(Double discount) {
-        this.setDiscount(discount);
+    public Invoice code(String code) {
+        this.setCode(code);
         return this;
     }
 
-    public void setDiscount(Double discount) {
-        this.discount = discount;
-    }
-
-    public Double getTax() {
-        return this.tax;
-    }
-
-    public Invoice tax(Double tax) {
-        this.setTax(tax);
-        return this;
-    }
-
-    public void setTax(Double tax) {
-        this.tax = tax;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public ZonedDateTime getDate() {
@@ -100,6 +90,32 @@ public class Invoice implements Serializable {
         this.date = date;
     }
 
+    public Double getDiscount() {
+        return this.discount;
+    }
+
+    public Invoice discount(Double discount) {
+        this.setDiscount(discount);
+        return this;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
+    }
+
+    public Integer getTax() {
+        return this.tax;
+    }
+
+    public Invoice tax(Integer tax) {
+        this.setTax(tax);
+        return this;
+    }
+
+    public void setTax(Integer tax) {
+        this.tax = tax;
+    }
+
     public Double getTotal() {
         return this.total;
     }
@@ -113,17 +129,30 @@ public class Invoice implements Serializable {
         this.total = total;
     }
 
-    public Integer getStamp() {
+    public byte[] getStamp() {
         return this.stamp;
     }
 
-    public Invoice stamp(Integer stamp) {
+    public Invoice stamp(byte[] stamp) {
         this.setStamp(stamp);
         return this;
     }
 
-    public void setStamp(Integer stamp) {
+    public void setStamp(byte[] stamp) {
         this.stamp = stamp;
+    }
+
+    public String getStampContentType() {
+        return this.stampContentType;
+    }
+
+    public Invoice stampContentType(String stampContentType) {
+        this.stampContentType = stampContentType;
+        return this;
+    }
+
+    public void setStampContentType(String stampContentType) {
+        this.stampContentType = stampContentType;
     }
 
     public String getRemarks() {
@@ -137,19 +166,6 @@ public class Invoice implements Serializable {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
-    }
-
-    public String getCode() {
-        return this.code;
-    }
-
-    public Invoice code(String code) {
-        this.setCode(code);
-        return this;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public Client getClient() {
@@ -189,13 +205,14 @@ public class Invoice implements Serializable {
     public String toString() {
         return "Invoice{" +
             "id=" + getId() +
+            ", code='" + getCode() + "'" +
+            ", date='" + getDate() + "'" +
             ", discount=" + getDiscount() +
             ", tax=" + getTax() +
-            ", date='" + getDate() + "'" +
             ", total=" + getTotal() +
-            ", stamp=" + getStamp() +
+            ", stamp='" + getStamp() + "'" +
+            ", stampContentType='" + getStampContentType() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", code='" + getCode() + "'" +
             "}";
     }
 }

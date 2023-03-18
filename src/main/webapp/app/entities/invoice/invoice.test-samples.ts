@@ -9,25 +9,26 @@ export const sampleWithRequiredData: IInvoice = {
 
 export const sampleWithPartialData: IInvoice = {
   id: 'fde13186-e041-4cf8-b9c7-8bc7ad4f9872',
-  tax: 49829,
-  total: 5549,
-  remarks: 'Bond Industrial',
-  code: 'synthesize',
+  code: 'Practical Industrial',
+  discount: 7945,
+  total: 77441,
+  remarks: 'black parse Nigeria',
 };
 
 export const sampleWithFullData: IInvoice = {
-  id: '48cf88a0-2ac5-4036-9410-6258c3fa9212',
-  discount: 74504,
-  tax: 89737,
-  date: dayjs('2023-03-06T11:52'),
-  total: 13398,
-  stamp: 1710,
-  remarks: 'throughput Intelligent deposit',
-  code: 'Programmable transform Parkway',
+  id: '2ac5036d-4106-4258-83fa-9212be220d5f',
+  code: 'Intelligent deposit',
+  date: dayjs('2023-03-05T19:14'),
+  discount: 23255,
+  tax: 66487,
+  total: 18397,
+  stamp: '../fake-data/blob/hipster.png',
+  stampContentType: 'unknown',
+  remarks: 'Soft York',
 };
 
 export const sampleWithNewData: NewInvoice = {
-  code: 'user Representative Rand',
+  code: 'Jamahiriya',
   id: null,
 };
 

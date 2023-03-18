@@ -3,16 +3,21 @@
   "dto": "mapstruct",
   "fields": [
     {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    },
+    {
       "fieldName": "discount",
       "fieldType": "Double"
     },
     {
       "fieldName": "tax",
-      "fieldType": "Double"
-    },
-    {
-      "fieldName": "date",
-      "fieldType": "ZonedDateTime"
+      "fieldType": "Integer"
     },
     {
       "fieldName": "total",
@@ -20,16 +25,12 @@
     },
     {
       "fieldName": "stamp",
-      "fieldType": "Integer"
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
     },
     {
       "fieldName": "remarks",
       "fieldType": "String"
-    },
-    {
-      "fieldName": "code",
-      "fieldType": "String",
-      "fieldValidateRules": ["required", "unique"]
     }
   ],
   "name": "Invoice",
@@ -37,7 +38,7 @@
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityField": "id",
+      "otherEntityField": "name",
       "otherEntityName": "client",
       "otherEntityRelationshipName": "invoice",
       "ownerSide": true,

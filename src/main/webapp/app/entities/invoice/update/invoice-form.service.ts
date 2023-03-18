@@ -31,13 +31,14 @@ type InvoiceFormDefaults = Pick<NewInvoice, 'id' | 'date'>;
 
 type InvoiceFormGroupContent = {
   id: FormControl<InvoiceFormRawValue['id'] | NewInvoice['id']>;
+  code: FormControl<InvoiceFormRawValue['code']>;
+  date: FormControl<InvoiceFormRawValue['date']>;
   discount: FormControl<InvoiceFormRawValue['discount']>;
   tax: FormControl<InvoiceFormRawValue['tax']>;
-  date: FormControl<InvoiceFormRawValue['date']>;
   total: FormControl<InvoiceFormRawValue['total']>;
   stamp: FormControl<InvoiceFormRawValue['stamp']>;
+  stampContentType: FormControl<InvoiceFormRawValue['stampContentType']>;
   remarks: FormControl<InvoiceFormRawValue['remarks']>;
-  code: FormControl<InvoiceFormRawValue['code']>;
   client: FormControl<InvoiceFormRawValue['client']>;
 };
 
@@ -58,15 +59,16 @@ export class InvoiceFormService {
           validators: [Validators.required],
         }
       ),
-      discount: new FormControl(invoiceRawValue.discount),
-      tax: new FormControl(invoiceRawValue.tax),
-      date: new FormControl(invoiceRawValue.date),
-      total: new FormControl(invoiceRawValue.total),
-      stamp: new FormControl(invoiceRawValue.stamp),
-      remarks: new FormControl(invoiceRawValue.remarks),
       code: new FormControl(invoiceRawValue.code, {
         validators: [Validators.required],
       }),
+      date: new FormControl(invoiceRawValue.date),
+      discount: new FormControl(invoiceRawValue.discount),
+      tax: new FormControl(invoiceRawValue.tax),
+      total: new FormControl(invoiceRawValue.total),
+      stamp: new FormControl(invoiceRawValue.stamp),
+      stampContentType: new FormControl(invoiceRawValue.stampContentType),
+      remarks: new FormControl(invoiceRawValue.remarks),
       client: new FormControl(invoiceRawValue.client),
     });
   }

@@ -14,6 +14,14 @@
         <dd>
           <span>{{ invoice.id }}</span>
         </dd>
+        <dt><span>Code</span></dt>
+        <dd>
+          <span>{{ invoice.code }}</span>
+        </dd>
+        <dt><span>Date</span></dt>
+        <dd>
+          <span>{{ invoice.date | formatMediumDatetime }}</span>
+        </dd>
         <dt><span>Discount</span></dt>
         <dd>
           <span>{{ invoice.discount }}</span>
@@ -22,30 +30,27 @@
         <dd>
           <span>{{ invoice.tax }}</span>
         </dd>
-        <dt><span>Date</span></dt>
-        <dd>
-          <span>{{ invoice.date | formatMediumDatetime }}</span>
-        </dd>
         <dt><span>Total</span></dt>
         <dd>
           <span>{{ invoice.total }}</span>
         </dd>
         <dt><span>Stamp</span></dt>
         <dd>
-          <span>{{ invoice.stamp }}</span>
+          <div *ngIf="invoice.stamp">
+            <a (click)="openFile(invoice.stamp, invoice.stampContentType)">
+              <img [src]="'data:' + invoice.stampContentType + ';base64,' + invoice.stamp" style="max-width: 100%" alt="invoice image" />
+            </a>
+            {{ invoice.stampContentType }}, {{ byteSize(invoice.stamp) }}
+          </div>
         </dd>
         <dt><span>Remarks</span></dt>
         <dd>
           <span>{{ invoice.remarks }}</span>
         </dd>
-        <dt><span>Code</span></dt>
-        <dd>
-          <span>{{ invoice.code }}</span>
-        </dd>
         <dt><span>Client</span></dt>
         <dd>
           <div *ngIf="invoice.client">
-            <a [routerLink]="['/client', invoice.client.id, 'view']">{{ invoice.client.id }}</a>
+            <a [routerLink]="['/client', invoice.client.id, 'view']">{{ invoice.client.name }}</a>
           </div>
         </dd>
       </dl>

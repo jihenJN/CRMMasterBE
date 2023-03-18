@@ -135,10 +135,11 @@ public class InvoiceResource {
     /**
      * {@code GET  /invoices} : get all the invoices.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of invoices in body.
      */
     @GetMapping("/invoices")
-    public List<InvoiceDTO> getAllInvoices() {
+    public List<InvoiceDTO> getAllInvoices(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Invoices");
         return invoiceService.findAll();
     }

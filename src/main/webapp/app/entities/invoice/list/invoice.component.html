@@ -38,6 +38,18 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="code">
+            <div class="d-flex">
+              <span>Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <div class="d-flex">
+              <span>Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="discount">
             <div class="d-flex">
               <span>Discount</span>
@@ -47,12 +59,6 @@
           <th scope="col" jhiSortBy="tax">
             <div class="d-flex">
               <span>Tax</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="date">
-            <div class="d-flex">
-              <span>Date</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -74,13 +80,7 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="code">
-            <div class="d-flex">
-              <span>Code</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="client.id">
+          <th scope="col" jhiSortBy="client.name">
             <div class="d-flex">
               <span>Client</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -94,16 +94,21 @@
           <td>
             <a [routerLink]="['/invoice', invoice.id, 'view']">{{ invoice.id }}</a>
           </td>
+          <td>{{ invoice.code }}</td>
+          <td>{{ invoice.date | formatMediumDatetime }}</td>
           <td>{{ invoice.discount }}</td>
           <td>{{ invoice.tax }}</td>
-          <td>{{ invoice.date | formatMediumDatetime }}</td>
           <td>{{ invoice.total }}</td>
-          <td>{{ invoice.stamp }}</td>
+          <td>
+            <a *ngIf="invoice.stamp" (click)="openFile(invoice.stamp, invoice.stampContentType)">
+              <img [src]="'data:' + invoice.stampContentType + ';base64,' + invoice.stamp" style="max-height: 30px" alt="invoice image" />
+            </a>
+            <span *ngIf="invoice.stamp">{{ invoice.stampContentType }}, {{ byteSize(invoice.stamp) }}</span>
+          </td>
           <td>{{ invoice.remarks }}</td>
-          <td>{{ invoice.code }}</td>
           <td>
             <div *ngIf="invoice.client">
-              <a [routerLink]="['/client', invoice.client.id, 'view']">{{ invoice.client.id }}</a>
+              <a [routerLink]="['/client', invoice.client.id, 'view']">{{ invoice.client.name }}</a>
             </div>
           </td>
           <td class="text-end">

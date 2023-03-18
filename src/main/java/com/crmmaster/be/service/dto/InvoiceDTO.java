@@ -13,20 +13,21 @@ public class InvoiceDTO implements Serializable {
 
     private String id;
 
-    private Double discount;
-
-    private Double tax;
+    @NotNull
+    private String code;
 
     private ZonedDateTime date;
 
+    private Double discount;
+
+    private Integer tax;
+
     private Double total;
 
-    private Integer stamp;
+    private byte[] stamp;
 
+    private String stampContentType;
     private String remarks;
-
-    @NotNull
-    private String code;
 
     private ClientDTO client;
 
@@ -38,20 +39,12 @@ public class InvoiceDTO implements Serializable {
         this.id = id;
     }
 
-    public Double getDiscount() {
-        return discount;
+    public String getCode() {
+        return code;
     }
 
-    public void setDiscount(Double discount) {
-        this.discount = discount;
-    }
-
-    public Double getTax() {
-        return tax;
-    }
-
-    public void setTax(Double tax) {
-        this.tax = tax;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public ZonedDateTime getDate() {
@@ -62,6 +55,22 @@ public class InvoiceDTO implements Serializable {
         this.date = date;
     }
 
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
+    }
+
+    public Integer getTax() {
+        return tax;
+    }
+
+    public void setTax(Integer tax) {
+        this.tax = tax;
+    }
+
     public Double getTotal() {
         return total;
     }
@@ -70,12 +79,20 @@ public class InvoiceDTO implements Serializable {
         this.total = total;
     }
 
-    public Integer getStamp() {
+    public byte[] getStamp() {
         return stamp;
     }
 
-    public void setStamp(Integer stamp) {
+    public void setStamp(byte[] stamp) {
         this.stamp = stamp;
+    }
+
+    public String getStampContentType() {
+        return stampContentType;
+    }
+
+    public void setStampContentType(String stampContentType) {
+        this.stampContentType = stampContentType;
     }
 
     public String getRemarks() {
@@ -84,14 +101,6 @@ public class InvoiceDTO implements Serializable {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public ClientDTO getClient() {
@@ -128,13 +137,13 @@ public class InvoiceDTO implements Serializable {
     public String toString() {
         return "InvoiceDTO{" +
             "id='" + getId() + "'" +
+            ", code='" + getCode() + "'" +
+            ", date='" + getDate() + "'" +
             ", discount=" + getDiscount() +
             ", tax=" + getTax() +
-            ", date='" + getDate() + "'" +
             ", total=" + getTotal() +
-            ", stamp=" + getStamp() +
+            ", stamp='" + getStamp() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", code='" + getCode() + "'" +
             ", client=" + getClient() +
             "}";
     }

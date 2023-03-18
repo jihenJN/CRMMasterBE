@@ -20,13 +20,13 @@ describe('Invoice Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            code: expect.any(Object),
+            date: expect.any(Object),
             discount: expect.any(Object),
             tax: expect.any(Object),
-            date: expect.any(Object),
             total: expect.any(Object),
             stamp: expect.any(Object),
             remarks: expect.any(Object),
-            code: expect.any(Object),
             client: expect.any(Object),
           })
         );
@@ -38,13 +38,13 @@ describe('Invoice Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            code: expect.any(Object),
+            date: expect.any(Object),
             discount: expect.any(Object),
             tax: expect.any(Object),
-            date: expect.any(Object),
             total: expect.any(Object),
             stamp: expect.any(Object),
             remarks: expect.any(Object),
-            code: expect.any(Object),
             client: expect.any(Object),
           })
         );

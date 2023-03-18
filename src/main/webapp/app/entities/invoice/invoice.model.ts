@@ -3,14 +3,15 @@ import { IClient } from 'app/entities/client/client.model';
 
 export interface IInvoice {
   id: string;
+  code?: string | null;
+  date?: dayjs.Dayjs | null;
   discount?: number | null;
   tax?: number | null;
-  date?: dayjs.Dayjs | null;
   total?: number | null;
-  stamp?: number | null;
+  stamp?: string | null;
+  stampContentType?: string | null;
   remarks?: string | null;
-  code?: string | null;
-  client?: Pick<IClient, 'id'> | null;
+  client?: Pick<IClient, 'id' | 'name'> | null;
 }
 
 export type NewInvoice = Omit<IInvoice, 'id'> & { id: null };
