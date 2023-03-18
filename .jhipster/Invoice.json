@@ -25,6 +25,11 @@
     {
       "fieldName": "remarks",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
     }
   ],
   "name": "Invoice",

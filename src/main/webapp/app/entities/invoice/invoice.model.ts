@@ -9,6 +9,7 @@ export interface IInvoice {
   total?: number | null;
   stamp?: number | null;
   remarks?: string | null;
+  code?: string | null;
   client?: Pick<IClient, 'id'> | null;
 }
 

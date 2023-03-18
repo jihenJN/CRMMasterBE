@@ -2,6 +2,7 @@ package com.crmmaster.be.domain;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import javax.validation.constraints.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -36,6 +37,10 @@ public class Invoice implements Serializable {
 
     @Field("remarks")
     private String remarks;
+
+    @NotNull
+    @Field("code")
+    private String code;
 
     @DBRef
     @Field("client")
@@ -134,6 +139,19 @@ public class Invoice implements Serializable {
         this.remarks = remarks;
     }
 
+    public String getCode() {
+        return this.code;
+    }
+
+    public Invoice code(String code) {
+        this.setCode(code);
+        return this;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public Client getClient() {
         return this.client;
     }
@@ -177,6 +195,7 @@ public class Invoice implements Serializable {
             ", total=" + getTotal() +
             ", stamp=" + getStamp() +
             ", remarks='" + getRemarks() + "'" +
+            ", code='" + getCode() + "'" +
             "}";
     }
 }

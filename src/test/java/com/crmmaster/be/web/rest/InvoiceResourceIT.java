@@ -51,6 +51,9 @@ class InvoiceResourceIT {
     private static final String DEFAULT_REMARKS = "AAAAAAAAAA";
     private static final String UPDATED_REMARKS = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/invoices";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -78,7 +81,8 @@ class InvoiceResourceIT {
             .date(DEFAULT_DATE)
             .total(DEFAULT_TOTAL)
             .stamp(DEFAULT_STAMP)
-            .remarks(DEFAULT_REMARKS);
+            .remarks(DEFAULT_REMARKS)
+            .code(DEFAULT_CODE);
         return invoice;
     }
 
@@ -95,7 +99,8 @@ class InvoiceResourceIT {
             .date(UPDATED_DATE)
             .total(UPDATED_TOTAL)
             .stamp(UPDATED_STAMP)
-            .remarks(UPDATED_REMARKS);
+            .remarks(UPDATED_REMARKS)
+            .code(UPDATED_CODE);
         return invoice;
     }
 
@@ -124,6 +129,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getTotal()).isEqualTo(DEFAULT_TOTAL);
         assertThat(testInvoice.getStamp()).isEqualTo(DEFAULT_STAMP);
         assertThat(testInvoice.getRemarks()).isEqualTo(DEFAULT_REMARKS);
+        assertThat(testInvoice.getCode()).isEqualTo(DEFAULT_CODE);
     }
 
     @Test
@@ -145,6 +151,23 @@ class InvoiceResourceIT {
     }
 
     @Test
+    void checkCodeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = invoiceRepository.findAll().size();
+        // set the field null
+        invoice.setCode(null);
+
+        // Create the Invoice, which fails.
+        InvoiceDTO invoiceDTO = invoiceMapper.toDto(invoice);
+
+        restInvoiceMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(invoiceDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Invoice> invoiceList = invoiceRepository.findAll();
+        assertThat(invoiceList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
     void getAllInvoices() throws Exception {
         // Initialize the database
         invoiceRepository.save(invoice);
@@ -160,7 +183,8 @@ class InvoiceResourceIT {
             .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
             .andExpect(jsonPath("$.[*].total").value(hasItem(DEFAULT_TOTAL.doubleValue())))
             .andExpect(jsonPath("$.[*].stamp").value(hasItem(DEFAULT_STAMP)))
-            .andExpect(jsonPath("$.[*].remarks").value(hasItem(DEFAULT_REMARKS)));
+            .andExpect(jsonPath("$.[*].remarks").value(hasItem(DEFAULT_REMARKS)))
+            .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)));
     }
 
     @Test
@@ -179,7 +203,8 @@ class InvoiceResourceIT {
             .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)))
             .andExpect(jsonPath("$.total").value(DEFAULT_TOTAL.doubleValue()))
             .andExpect(jsonPath("$.stamp").value(DEFAULT_STAMP))
-            .andExpect(jsonPath("$.remarks").value(DEFAULT_REMARKS));
+            .andExpect(jsonPath("$.remarks").value(DEFAULT_REMARKS))
+            .andExpect(jsonPath("$.code").value(DEFAULT_CODE));
     }
 
     @Test
@@ -203,7 +228,8 @@ class InvoiceResourceIT {
             .date(UPDATED_DATE)
             .total(UPDATED_TOTAL)
             .stamp(UPDATED_STAMP)
-            .remarks(UPDATED_REMARKS);
+            .remarks(UPDATED_REMARKS)
+            .code(UPDATED_CODE);
         InvoiceDTO invoiceDTO = invoiceMapper.toDto(updatedInvoice);
 
         restInvoiceMockMvc
@@ -224,6 +250,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getTotal()).isEqualTo(UPDATED_TOTAL);
         assertThat(testInvoice.getStamp()).isEqualTo(UPDATED_STAMP);
         assertThat(testInvoice.getRemarks()).isEqualTo(UPDATED_REMARKS);
+        assertThat(testInvoice.getCode()).isEqualTo(UPDATED_CODE);
     }
 
     @Test
@@ -319,6 +346,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getTotal()).isEqualTo(UPDATED_TOTAL);
         assertThat(testInvoice.getStamp()).isEqualTo(UPDATED_STAMP);
         assertThat(testInvoice.getRemarks()).isEqualTo(DEFAULT_REMARKS);
+        assertThat(testInvoice.getCode()).isEqualTo(DEFAULT_CODE);
     }
 
     @Test
@@ -338,7 +366,8 @@ class InvoiceResourceIT {
             .date(UPDATED_DATE)
             .total(UPDATED_TOTAL)
             .stamp(UPDATED_STAMP)
-            .remarks(UPDATED_REMARKS);
+            .remarks(UPDATED_REMARKS)
+            .code(UPDATED_CODE);
 
         restInvoiceMockMvc
             .perform(
@@ -358,6 +387,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getTotal()).isEqualTo(UPDATED_TOTAL);
         assertThat(testInvoice.getStamp()).isEqualTo(UPDATED_STAMP);
         assertThat(testInvoice.getRemarks()).isEqualTo(UPDATED_REMARKS);
+        assertThat(testInvoice.getCode()).isEqualTo(UPDATED_CODE);
     }
 
     @Test

@@ -37,6 +37,7 @@ type InvoiceFormGroupContent = {
   total: FormControl<InvoiceFormRawValue['total']>;
   stamp: FormControl<InvoiceFormRawValue['stamp']>;
   remarks: FormControl<InvoiceFormRawValue['remarks']>;
+  code: FormControl<InvoiceFormRawValue['code']>;
   client: FormControl<InvoiceFormRawValue['client']>;
 };
 
@@ -63,6 +64,9 @@ export class InvoiceFormService {
       total: new FormControl(invoiceRawValue.total),
       stamp: new FormControl(invoiceRawValue.stamp),
       remarks: new FormControl(invoiceRawValue.remarks),
+      code: new FormControl(invoiceRawValue.code, {
+        validators: [Validators.required],
+      }),
       client: new FormControl(invoiceRawValue.client),
     });
   }

@@ -3,6 +3,7 @@ package com.crmmaster.be.service.dto;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
+import javax.validation.constraints.*;
 
 /**
  * A DTO for the {@link com.crmmaster.be.domain.Invoice} entity.
@@ -23,6 +24,9 @@ public class InvoiceDTO implements Serializable {
     private Integer stamp;
 
     private String remarks;
+
+    @NotNull
+    private String code;
 
     private ClientDTO client;
 
@@ -82,6 +86,14 @@ public class InvoiceDTO implements Serializable {
         this.remarks = remarks;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public ClientDTO getClient() {
         return client;
     }
@@ -122,6 +134,7 @@ public class InvoiceDTO implements Serializable {
             ", total=" + getTotal() +
             ", stamp=" + getStamp() +
             ", remarks='" + getRemarks() + "'" +
+            ", code='" + getCode() + "'" +
             ", client=" + getClient() +
             "}";
     }
