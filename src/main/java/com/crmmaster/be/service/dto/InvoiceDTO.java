@@ -1,5 +1,6 @@
 package com.crmmaster.be.service.dto;
 
+import com.crmmaster.be.domain.enumeration.status;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -28,6 +29,8 @@ public class InvoiceDTO implements Serializable {
 
     private String stampContentType;
     private String remarks;
+
+    private status status;
 
     private ClientDTO client;
 
@@ -103,6 +106,14 @@ public class InvoiceDTO implements Serializable {
         this.remarks = remarks;
     }
 
+    public status getStatus() {
+        return status;
+    }
+
+    public void setStatus(status status) {
+        this.status = status;
+    }
+
     public ClientDTO getClient() {
         return client;
     }
@@ -144,6 +155,7 @@ public class InvoiceDTO implements Serializable {
             ", total=" + getTotal() +
             ", stamp='" + getStamp() + "'" +
             ", remarks='" + getRemarks() + "'" +
+            ", status='" + getStatus() + "'" +
             ", client=" + getClient() +
             "}";
     }

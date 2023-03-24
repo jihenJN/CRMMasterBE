@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.crmmaster.be.IntegrationTest;
 import com.crmmaster.be.domain.Invoice;
+import com.crmmaster.be.domain.enumeration.status;
 import com.crmmaster.be.repository.InvoiceRepository;
 import com.crmmaster.be.service.InvoiceService;
 import com.crmmaster.be.service.dto.InvoiceDTO;
@@ -67,6 +68,9 @@ class InvoiceResourceIT {
     private static final String DEFAULT_REMARKS = "AAAAAAAAAA";
     private static final String UPDATED_REMARKS = "BBBBBBBBBB";
 
+    private static final status DEFAULT_STATUS = status.DRAFT;
+    private static final status UPDATED_STATUS = status.SENT;
+
     private static final String ENTITY_API_URL = "/api/invoices";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -102,7 +106,8 @@ class InvoiceResourceIT {
             .total(DEFAULT_TOTAL)
             .stamp(DEFAULT_STAMP)
             .stampContentType(DEFAULT_STAMP_CONTENT_TYPE)
-            .remarks(DEFAULT_REMARKS);
+            .remarks(DEFAULT_REMARKS)
+            .status(DEFAULT_STATUS);
         return invoice;
     }
 
@@ -121,7 +126,8 @@ class InvoiceResourceIT {
             .total(UPDATED_TOTAL)
             .stamp(UPDATED_STAMP)
             .stampContentType(UPDATED_STAMP_CONTENT_TYPE)
-            .remarks(UPDATED_REMARKS);
+            .remarks(UPDATED_REMARKS)
+            .status(UPDATED_STATUS);
         return invoice;
     }
 
@@ -152,6 +158,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getStamp()).isEqualTo(DEFAULT_STAMP);
         assertThat(testInvoice.getStampContentType()).isEqualTo(DEFAULT_STAMP_CONTENT_TYPE);
         assertThat(testInvoice.getRemarks()).isEqualTo(DEFAULT_REMARKS);
+        assertThat(testInvoice.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -207,7 +214,8 @@ class InvoiceResourceIT {
             .andExpect(jsonPath("$.[*].total").value(hasItem(DEFAULT_TOTAL.doubleValue())))
             .andExpect(jsonPath("$.[*].stampContentType").value(hasItem(DEFAULT_STAMP_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].stamp").value(hasItem(Base64Utils.encodeToString(DEFAULT_STAMP))))
-            .andExpect(jsonPath("$.[*].remarks").value(hasItem(DEFAULT_REMARKS)));
+            .andExpect(jsonPath("$.[*].remarks").value(hasItem(DEFAULT_REMARKS)))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -245,7 +253,8 @@ class InvoiceResourceIT {
             .andExpect(jsonPath("$.total").value(DEFAULT_TOTAL.doubleValue()))
             .andExpect(jsonPath("$.stampContentType").value(DEFAULT_STAMP_CONTENT_TYPE))
             .andExpect(jsonPath("$.stamp").value(Base64Utils.encodeToString(DEFAULT_STAMP)))
-            .andExpect(jsonPath("$.remarks").value(DEFAULT_REMARKS));
+            .andExpect(jsonPath("$.remarks").value(DEFAULT_REMARKS))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
     }
 
     @Test
@@ -271,7 +280,8 @@ class InvoiceResourceIT {
             .total(UPDATED_TOTAL)
             .stamp(UPDATED_STAMP)
             .stampContentType(UPDATED_STAMP_CONTENT_TYPE)
-            .remarks(UPDATED_REMARKS);
+            .remarks(UPDATED_REMARKS)
+            .status(UPDATED_STATUS);
         InvoiceDTO invoiceDTO = invoiceMapper.toDto(updatedInvoice);
 
         restInvoiceMockMvc
@@ -294,6 +304,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getStamp()).isEqualTo(UPDATED_STAMP);
         assertThat(testInvoice.getStampContentType()).isEqualTo(UPDATED_STAMP_CONTENT_TYPE);
         assertThat(testInvoice.getRemarks()).isEqualTo(UPDATED_REMARKS);
+        assertThat(testInvoice.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test
@@ -391,6 +402,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getStamp()).isEqualTo(DEFAULT_STAMP);
         assertThat(testInvoice.getStampContentType()).isEqualTo(DEFAULT_STAMP_CONTENT_TYPE);
         assertThat(testInvoice.getRemarks()).isEqualTo(DEFAULT_REMARKS);
+        assertThat(testInvoice.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -412,7 +424,8 @@ class InvoiceResourceIT {
             .total(UPDATED_TOTAL)
             .stamp(UPDATED_STAMP)
             .stampContentType(UPDATED_STAMP_CONTENT_TYPE)
-            .remarks(UPDATED_REMARKS);
+            .remarks(UPDATED_REMARKS)
+            .status(UPDATED_STATUS);
 
         restInvoiceMockMvc
             .perform(
@@ -434,6 +447,7 @@ class InvoiceResourceIT {
         assertThat(testInvoice.getStamp()).isEqualTo(UPDATED_STAMP);
         assertThat(testInvoice.getStampContentType()).isEqualTo(UPDATED_STAMP_CONTENT_TYPE);
         assertThat(testInvoice.getRemarks()).isEqualTo(UPDATED_REMARKS);
+        assertThat(testInvoice.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test

@@ -5,20 +5,22 @@ export const sampleWithRequiredData: IProduct = {
 };
 
 export const sampleWithPartialData: IProduct = {
-  id: 'eb05732e-9cd2-4531-93fe-3a45b5084bec',
-  name: 'copying Tuna Marketing',
-  price: 11062,
-  description: 'Groves',
+  id: 'b05732e9-cd25-4315-bfe3-a45b5084becc',
+  name: 'frictionless payment Soft',
+  price: 22265,
+  description: 'structure lime',
+  inStock: 44267,
 };
 
 export const sampleWithFullData: IProduct = {
-  id: 'a3b776a4-568a-463e-85ba-bd435b43af8b',
-  name: 'Account parse service-desk',
-  price: 17196,
+  id: '6a4568a6-3e85-4bab-9435-b43af8bb9bbc',
+  name: 'copy Account orchestration',
+  price: 84770,
   photo: '../fake-data/blob/hipster.png',
   photoContentType: 'unknown',
-  description: 'orchestration backing Iraqi',
-  tax: 30005,
+  description: 'Rapid',
+  tax: 42945,
+  inStock: 30005,
 };
 
 export const sampleWithNewData: NewProduct = {

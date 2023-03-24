@@ -80,6 +80,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span>Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="client.name">
             <div class="d-flex">
               <span>Client</span>
@@ -106,6 +112,7 @@
             <span *ngIf="invoice.stamp">{{ invoice.stampContentType }}, {{ byteSize(invoice.stamp) }}</span>
           </td>
           <td>{{ invoice.remarks }}</td>
+          <td>{{ invoice.status }}</td>
           <td>
             <div *ngIf="invoice.client">
               <a [routerLink]="['/client', invoice.client.id, 'view']">{{ invoice.client.name }}</a>

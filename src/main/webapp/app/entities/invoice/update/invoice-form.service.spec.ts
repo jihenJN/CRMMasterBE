@@ -27,6 +27,7 @@ describe('Invoice Form Service', () => {
             total: expect.any(Object),
             stamp: expect.any(Object),
             remarks: expect.any(Object),
+            status: expect.any(Object),
             client: expect.any(Object),
           })
         );
@@ -45,6 +46,7 @@ describe('Invoice Form Service', () => {
             total: expect.any(Object),
             stamp: expect.any(Object),
             remarks: expect.any(Object),
+            status: expect.any(Object),
             client: expect.any(Object),
           })
         );

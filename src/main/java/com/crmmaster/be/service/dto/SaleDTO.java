@@ -19,6 +19,8 @@ public class SaleDTO implements Serializable {
 
     private Float discount;
 
+    private Boolean available;
+
     private ProductDTO product;
 
     private InvoiceDTO invoice;
@@ -61,6 +63,14 @@ public class SaleDTO implements Serializable {
 
     public void setDiscount(Float discount) {
         this.discount = discount;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
     public ProductDTO getProduct() {
@@ -109,6 +119,7 @@ public class SaleDTO implements Serializable {
             ", price=" + getPrice() +
             ", tax=" + getTax() +
             ", discount=" + getDiscount() +
+            ", available='" + getAvailable() + "'" +
             ", product=" + getProduct() +
             ", invoice=" + getInvoice() +
             "}";

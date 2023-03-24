@@ -22,6 +22,10 @@
     {
       "fieldName": "tax",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "inStock",
+      "fieldType": "Integer"
     }
   ],
   "name": "Product",

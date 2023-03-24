@@ -24,6 +24,7 @@ type ProductFormGroupContent = {
   photoContentType: FormControl<IProduct['photoContentType']>;
   description: FormControl<IProduct['description']>;
   tax: FormControl<IProduct['tax']>;
+  inStock: FormControl<IProduct['inStock']>;
 };
 
 export type ProductFormGroup = FormGroup<ProductFormGroupContent>;
@@ -49,6 +50,7 @@ export class ProductFormService {
       photoContentType: new FormControl(productRawValue.photoContentType),
       description: new FormControl(productRawValue.description),
       tax: new FormControl(productRawValue.tax),
+      inStock: new FormControl(productRawValue.inStock),
     });
   }
 

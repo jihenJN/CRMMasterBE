@@ -25,6 +25,7 @@ describe('Product Form Service', () => {
             photo: expect.any(Object),
             description: expect.any(Object),
             tax: expect.any(Object),
+            inStock: expect.any(Object),
           })
         );
       });
@@ -40,6 +41,7 @@ describe('Product Form Service', () => {
             photo: expect.any(Object),
             description: expect.any(Object),
             tax: expect.any(Object),
+            inStock: expect.any(Object),
           })
         );
       });

@@ -1,5 +1,6 @@
 package com.crmmaster.be.domain;
 
+import com.crmmaster.be.domain.enumeration.status;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import javax.validation.constraints.*;
@@ -44,6 +45,9 @@ public class Invoice implements Serializable {
 
     @Field("remarks")
     private String remarks;
+
+    @Field("status")
+    private status status;
 
     @DBRef
     @Field("client")
@@ -168,6 +172,19 @@ public class Invoice implements Serializable {
         this.remarks = remarks;
     }
 
+    public status getStatus() {
+        return this.status;
+    }
+
+    public Invoice status(status status) {
+        this.setStatus(status);
+        return this;
+    }
+
+    public void setStatus(status status) {
+        this.status = status;
+    }
+
     public Client getClient() {
         return this.client;
     }
@@ -213,6 +230,7 @@ public class Invoice implements Serializable {
             ", stamp='" + getStamp() + "'" +
             ", stampContentType='" + getStampContentType() + "'" +
             ", remarks='" + getRemarks() + "'" +
+            ", status='" + getStatus() + "'" +
             "}";
     }
 }

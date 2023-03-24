@@ -46,6 +46,9 @@ class ProductResourceIT {
     private static final Integer DEFAULT_TAX = 1;
     private static final Integer UPDATED_TAX = 2;
 
+    private static final Integer DEFAULT_IN_STOCK = 1;
+    private static final Integer UPDATED_IN_STOCK = 2;
+
     private static final String ENTITY_API_URL = "/api/products";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -73,7 +76,8 @@ class ProductResourceIT {
             .photo(DEFAULT_PHOTO)
             .photoContentType(DEFAULT_PHOTO_CONTENT_TYPE)
             .description(DEFAULT_DESCRIPTION)
-            .tax(DEFAULT_TAX);
+            .tax(DEFAULT_TAX)
+            .inStock(DEFAULT_IN_STOCK);
         return product;
     }
 
@@ -90,7 +94,8 @@ class ProductResourceIT {
             .photo(UPDATED_PHOTO)
             .photoContentType(UPDATED_PHOTO_CONTENT_TYPE)
             .description(UPDATED_DESCRIPTION)
-            .tax(UPDATED_TAX);
+            .tax(UPDATED_TAX)
+            .inStock(UPDATED_IN_STOCK);
         return product;
     }
 
@@ -119,6 +124,7 @@ class ProductResourceIT {
         assertThat(testProduct.getPhotoContentType()).isEqualTo(DEFAULT_PHOTO_CONTENT_TYPE);
         assertThat(testProduct.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testProduct.getTax()).isEqualTo(DEFAULT_TAX);
+        assertThat(testProduct.getInStock()).isEqualTo(DEFAULT_IN_STOCK);
     }
 
     @Test
@@ -155,7 +161,8 @@ class ProductResourceIT {
             .andExpect(jsonPath("$.[*].photoContentType").value(hasItem(DEFAULT_PHOTO_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].photo").value(hasItem(Base64Utils.encodeToString(DEFAULT_PHOTO))))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].tax").value(hasItem(DEFAULT_TAX)));
+            .andExpect(jsonPath("$.[*].tax").value(hasItem(DEFAULT_TAX)))
+            .andExpect(jsonPath("$.[*].inStock").value(hasItem(DEFAULT_IN_STOCK)));
     }
 
     @Test
@@ -174,7 +181,8 @@ class ProductResourceIT {
             .andExpect(jsonPath("$.photoContentType").value(DEFAULT_PHOTO_CONTENT_TYPE))
             .andExpect(jsonPath("$.photo").value(Base64Utils.encodeToString(DEFAULT_PHOTO)))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.tax").value(DEFAULT_TAX));
+            .andExpect(jsonPath("$.tax").value(DEFAULT_TAX))
+            .andExpect(jsonPath("$.inStock").value(DEFAULT_IN_STOCK));
     }
 
     @Test
@@ -198,7 +206,8 @@ class ProductResourceIT {
             .photo(UPDATED_PHOTO)
             .photoContentType(UPDATED_PHOTO_CONTENT_TYPE)
             .description(UPDATED_DESCRIPTION)
-            .tax(UPDATED_TAX);
+            .tax(UPDATED_TAX)
+            .inStock(UPDATED_IN_STOCK);
         ProductDTO productDTO = productMapper.toDto(updatedProduct);
 
         restProductMockMvc
@@ -219,6 +228,7 @@ class ProductResourceIT {
         assertThat(testProduct.getPhotoContentType()).isEqualTo(UPDATED_PHOTO_CONTENT_TYPE);
         assertThat(testProduct.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testProduct.getTax()).isEqualTo(UPDATED_TAX);
+        assertThat(testProduct.getInStock()).isEqualTo(UPDATED_IN_STOCK);
     }
 
     @Test
@@ -294,7 +304,7 @@ class ProductResourceIT {
         Product partialUpdatedProduct = new Product();
         partialUpdatedProduct.setId(product.getId());
 
-        partialUpdatedProduct.tax(UPDATED_TAX);
+        partialUpdatedProduct.tax(UPDATED_TAX).inStock(UPDATED_IN_STOCK);
 
         restProductMockMvc
             .perform(
@@ -314,6 +324,7 @@ class ProductResourceIT {
         assertThat(testProduct.getPhotoContentType()).isEqualTo(DEFAULT_PHOTO_CONTENT_TYPE);
         assertThat(testProduct.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testProduct.getTax()).isEqualTo(UPDATED_TAX);
+        assertThat(testProduct.getInStock()).isEqualTo(UPDATED_IN_STOCK);
     }
 
     @Test
@@ -333,7 +344,8 @@ class ProductResourceIT {
             .photo(UPDATED_PHOTO)
             .photoContentType(UPDATED_PHOTO_CONTENT_TYPE)
             .description(UPDATED_DESCRIPTION)
-            .tax(UPDATED_TAX);
+            .tax(UPDATED_TAX)
+            .inStock(UPDATED_IN_STOCK);
 
         restProductMockMvc
             .perform(
@@ -353,6 +365,7 @@ class ProductResourceIT {
         assertThat(testProduct.getPhotoContentType()).isEqualTo(UPDATED_PHOTO_CONTENT_TYPE);
         assertThat(testProduct.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testProduct.getTax()).isEqualTo(UPDATED_TAX);
+        assertThat(testProduct.getInStock()).isEqualTo(UPDATED_IN_STOCK);
     }
 
     @Test

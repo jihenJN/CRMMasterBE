@@ -1,5 +1,6 @@
 import dayjs from 'dayjs/esm';
 import { IClient } from 'app/entities/client/client.model';
+import { status } from 'app/entities/enumerations/status.model';
 
 export interface IInvoice {
   id: string;
@@ -11,6 +12,7 @@ export interface IInvoice {
   stamp?: string | null;
   stampContentType?: string | null;
   remarks?: string | null;
+  status?: status | null;
   client?: Pick<IClient, 'id' | 'name'> | null;
 }
 

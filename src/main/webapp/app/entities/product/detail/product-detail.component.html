@@ -39,6 +39,10 @@
         <dd>
           <span>{{ product.tax }}</span>
         </dd>
+        <dt><span>In Stock</span></dt>
+        <dd>
+          <span>{{ product.inStock }}</span>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

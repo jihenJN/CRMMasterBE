@@ -68,6 +68,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="inStock">
+            <div class="d-flex">
+              <span>In Stock</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -86,6 +92,7 @@
           </td>
           <td>{{ product.description }}</td>
           <td>{{ product.tax }}</td>
+          <td>{{ product.inStock }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button

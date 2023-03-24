@@ -12,6 +12,7 @@ import { EventManager, EventWithContent } from 'app/core/util/event-manager.serv
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 import { IClient } from 'app/entities/client/client.model';
 import { ClientService } from 'app/entities/client/service/client.service';
+import { status } from 'app/entities/enumerations/status.model';
 
 @Component({
   selector: 'jhi-invoice-update',
@@ -20,6 +21,7 @@ import { ClientService } from 'app/entities/client/service/client.service';
 export class InvoiceUpdateComponent implements OnInit {
   isSaving = false;
   invoice: IInvoice | null = null;
+  statusValues = Object.keys(status);
 
   clientsSharedCollection: IClient[] = [];
 

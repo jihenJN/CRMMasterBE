@@ -39,6 +39,7 @@ type InvoiceFormGroupContent = {
   stamp: FormControl<InvoiceFormRawValue['stamp']>;
   stampContentType: FormControl<InvoiceFormRawValue['stampContentType']>;
   remarks: FormControl<InvoiceFormRawValue['remarks']>;
+  status: FormControl<InvoiceFormRawValue['status']>;
   client: FormControl<InvoiceFormRawValue['client']>;
 };
 
@@ -69,6 +70,7 @@ export class InvoiceFormService {
       stamp: new FormControl(invoiceRawValue.stamp),
       stampContentType: new FormControl(invoiceRawValue.stampContentType),
       remarks: new FormControl(invoiceRawValue.remarks),
+      status: new FormControl(invoiceRawValue.status),
       client: new FormControl(invoiceRawValue.client),
     });
   }

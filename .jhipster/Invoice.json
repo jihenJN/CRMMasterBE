@@ -31,6 +31,11 @@
     {
       "fieldName": "remarks",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "status",
+      "fieldValues": "DRAFT,SENT,RECEIVED,APPROVED,PAID,PARTIALLY_PAID,OVERDUE,VOID"
     }
   ],
   "name": "Invoice",

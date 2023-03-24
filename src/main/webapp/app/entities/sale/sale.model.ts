@@ -7,6 +7,7 @@ export interface ISale {
   price?: number | null;
   tax?: number | null;
   discount?: number | null;
+  available?: boolean | null;
   product?: Pick<IProduct, 'id' | 'name'> | null;
   invoice?: Pick<IInvoice, 'id'> | null;
 }

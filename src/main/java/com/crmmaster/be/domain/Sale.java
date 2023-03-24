@@ -31,6 +31,9 @@ public class Sale implements Serializable {
     @Field("discount")
     private Float discount;
 
+    @Field("available")
+    private Boolean available;
+
     @DBRef
     @Field("product")
     private Product product;
@@ -107,6 +110,19 @@ public class Sale implements Serializable {
         this.discount = discount;
     }
 
+    public Boolean getAvailable() {
+        return this.available;
+    }
+
+    public Sale available(Boolean available) {
+        this.setAvailable(available);
+        return this;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
+
     public Product getProduct() {
         return this.product;
     }
@@ -161,6 +177,7 @@ public class Sale implements Serializable {
             ", price=" + getPrice() +
             ", tax=" + getTax() +
             ", discount=" + getDiscount() +
+            ", available='" + getAvailable() + "'" +
             "}";
     }
 }

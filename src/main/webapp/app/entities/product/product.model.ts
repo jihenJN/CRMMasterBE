@@ -6,6 +6,7 @@ export interface IProduct {
   photoContentType?: string | null;
   description?: string | null;
   tax?: number | null;
+  inStock?: number | null;
 }
 
 export type NewProduct = Omit<IProduct, 'id'> & { id: null };

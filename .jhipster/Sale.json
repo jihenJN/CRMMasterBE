@@ -17,6 +17,10 @@
     {
       "fieldName": "discount",
       "fieldType": "Float"
+    },
+    {
+      "fieldName": "available",
+      "fieldType": "Boolean"
     }
   ],
   "name": "Sale",

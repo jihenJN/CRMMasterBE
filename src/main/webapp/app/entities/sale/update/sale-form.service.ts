@@ -14,7 +14,7 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type SaleFormGroupInput = ISale | PartialWithRequiredKeyOf<NewSale>;
 
-type SaleFormDefaults = Pick<NewSale, 'id'>;
+type SaleFormDefaults = Pick<NewSale, 'id' | 'available'>;
 
 type SaleFormGroupContent = {
   id: FormControl<ISale['id'] | NewSale['id']>;
@@ -22,6 +22,7 @@ type SaleFormGroupContent = {
   price: FormControl<ISale['price']>;
   tax: FormControl<ISale['tax']>;
   discount: FormControl<ISale['discount']>;
+  available: FormControl<ISale['available']>;
   product: FormControl<ISale['product']>;
   invoice: FormControl<ISale['invoice']>;
 };
@@ -47,6 +48,7 @@ export class SaleFormService {
       price: new FormControl(saleRawValue.price),
       tax: new FormControl(saleRawValue.tax),
       discount: new FormControl(saleRawValue.discount),
+      available: new FormControl(saleRawValue.available),
       product: new FormControl(saleRawValue.product),
       invoice: new FormControl(saleRawValue.invoice),
     });
@@ -69,6 +71,7 @@ export class SaleFormService {
   private getFormDefaults(): SaleFormDefaults {
     return {
       id: null,
+      available: false,
     };
   }
 }

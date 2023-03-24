@@ -24,6 +24,7 @@ describe('Sale Form Service', () => {
             price: expect.any(Object),
             tax: expect.any(Object),
             discount: expect.any(Object),
+            available: expect.any(Object),
             product: expect.any(Object),
             invoice: expect.any(Object),
           })
@@ -40,6 +41,7 @@ describe('Sale Form Service', () => {
             price: expect.any(Object),
             tax: expect.any(Object),
             discount: expect.any(Object),
+            available: expect.any(Object),
             product: expect.any(Object),
             invoice: expect.any(Object),
           })
