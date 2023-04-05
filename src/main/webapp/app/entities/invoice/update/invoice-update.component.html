@@ -89,7 +89,7 @@
           <label class="form-label" for="field_status">Status</label>
           <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
             <option [ngValue]="null"></option>
-            <option *ngFor="let status of statusValues" [value]="status">status</option>
+            <option *ngFor="let status of statusValues" [value]="status">{{status}}</option>
           </select>
         </div>
 
