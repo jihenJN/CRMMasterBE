@@ -62,7 +62,7 @@
             [compareWith]="compareInvoice"
           >
             <option [ngValue]="null"></option>
-            <option [ngValue]="invoiceOption" *ngFor="let invoiceOption of invoicesSharedCollection">{{ invoiceOption.id }}</option>
+            <option [ngValue]="invoiceOption" *ngFor="let invoiceOption of invoicesSharedCollection">{{ invoiceOption.code}}</option>
           </select>
         </div>
       </div>

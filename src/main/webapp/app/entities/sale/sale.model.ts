@@ -9,7 +9,7 @@ export interface ISale {
   discount?: number | null;
   available?: boolean | null;
   product?: Pick<IProduct, 'id' | 'name'> | null;
-  invoice?: Pick<IInvoice, 'id'> | null;
+  invoice?: Pick<IInvoice, 'id' | 'code'> | null;
 }
 
 export type NewSale = Omit<ISale, 'id'> & { id: null };

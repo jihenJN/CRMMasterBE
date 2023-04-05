@@ -43,7 +43,7 @@
         <dt><span>Invoice</span></dt>
         <dd>
           <div *ngIf="sale.invoice">
-            <a [routerLink]="['/invoice', sale.invoice.id, 'view']">{{ sale.invoice.id }}</a>
+            <a [routerLink]="['/invoice', sale.invoice.id, 'view']">{{ sale.invoice.code }}</a>
           </div>
         </dd>
       </dl>
