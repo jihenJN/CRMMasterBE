@@ -22,4 +22,7 @@ public interface SaleRepository extends MongoRepository<Sale, String> {
 
     @Query("{'id': ?0}")
     Optional<Sale> findOneWithEagerRelationships(String id);
+    
+    
+    
 }

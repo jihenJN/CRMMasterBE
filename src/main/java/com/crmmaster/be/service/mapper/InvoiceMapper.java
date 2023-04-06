@@ -18,5 +18,8 @@ public interface InvoiceMapper extends EntityMapper<InvoiceDTO, Invoice> {
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "name")
+    @Mapping(target = "phone", source = "phone")
+    @Mapping(target = "address", source = "address")
+    @Mapping(target = "email", source = "email")
     ClientDTO toDtoClientName(Client client);
 }
