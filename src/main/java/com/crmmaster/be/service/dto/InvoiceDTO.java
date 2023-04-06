@@ -3,6 +3,8 @@ package com.crmmaster.be.service.dto;
 import com.crmmaster.be.domain.enumeration.status;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import javax.validation.constraints.*;
 
@@ -33,6 +35,8 @@ public class InvoiceDTO implements Serializable {
     private status status;
 
     private ClientDTO client;
+    
+    private List<SaleDTO> sales;
 
     public String getId() {
         return id;
@@ -58,7 +62,15 @@ public class InvoiceDTO implements Serializable {
         this.date = date;
     }
 
-    public Double getDiscount() {
+    public List<SaleDTO> getSales() {
+		return sales;
+	}
+
+	public void setSales(List<SaleDTO> sales) {
+		this.sales = sales;
+	}
+
+	public Double getDiscount() {
         return discount;
     }
 
@@ -143,20 +155,14 @@ public class InvoiceDTO implements Serializable {
         return Objects.hash(this.id);
     }
 
-    // prettier-ignore
-    @Override
-    public String toString() {
-        return "InvoiceDTO{" +
-            "id='" + getId() + "'" +
-            ", code='" + getCode() + "'" +
-            ", date='" + getDate() + "'" +
-            ", discount=" + getDiscount() +
-            ", tax=" + getTax() +
-            ", total=" + getTotal() +
-            ", stamp='" + getStamp() + "'" +
-            ", remarks='" + getRemarks() + "'" +
-            ", status='" + getStatus() + "'" +
-            ", client=" + getClient() +
-            "}";
-    }
+	@Override
+	public String toString() {
+		return "InvoiceDTO [id=" + id + ", code=" + code + ", date=" + date + ", discount=" + discount + ", tax=" + tax
+				+ ", total=" + total + ", stamp=" + Arrays.toString(stamp) + ", stampContentType=" + stampContentType
+				+ ", remarks=" + remarks + ", status=" + status + ", client=" + client + ", sales=" + sales + "]";
+	}
+    
+    
+
+   
 }

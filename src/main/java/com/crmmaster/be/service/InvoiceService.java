@@ -1,9 +1,15 @@
 package com.crmmaster.be.service;
 
 import com.crmmaster.be.domain.Invoice;
+import com.crmmaster.be.domain.Sale;
 import com.crmmaster.be.repository.InvoiceRepository;
+import com.crmmaster.be.repository.SaleRepository;
 import com.crmmaster.be.service.dto.InvoiceDTO;
+import com.crmmaster.be.service.dto.SaleDTO;
 import com.crmmaster.be.service.mapper.InvoiceMapper;
+import com.crmmaster.be.service.mapper.SaleMapper;
+
+import java.io.Console;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -25,10 +31,22 @@ public class InvoiceService {
     private final InvoiceRepository invoiceRepository;
 
     private final InvoiceMapper invoiceMapper;
+    
+    private final SaleRepository saleRepository;
 
-    public InvoiceService(InvoiceRepository invoiceRepository, InvoiceMapper invoiceMapper) {
+    private final SaleMapper saleMapper; 
+    
+    
+
+    public InvoiceService(
+    		InvoiceRepository invoiceRepository, 
+    		InvoiceMapper invoiceMapper,
+    		SaleRepository saleRepository,
+    		SaleMapper saleMapper) {
         this.invoiceRepository = invoiceRepository;
         this.invoiceMapper = invoiceMapper;
+        this.saleRepository = saleRepository;
+        this.saleMapper = saleMapper;
     }
 
     /**
@@ -38,10 +56,30 @@ public class InvoiceService {
      * @return the persisted entity.
      */
     public InvoiceDTO save(InvoiceDTO invoiceDTO) {
-        log.debug("Request to save Invoice : {}", invoiceDTO);
+        
         Invoice invoice = invoiceMapper.toEntity(invoiceDTO);
         invoice = invoiceRepository.save(invoice);
-        return invoiceMapper.toDto(invoice);
+        
+        
+        for(int i=0; i<invoiceDTO.getSales().size(); i++) {
+        	
+        	SaleDTO saleDTO = invoiceDTO.getSales().get(i);
+        	saleDTO.setInvoice(invoiceMapper.toDto(invoice));
+        	log.debug("Request to save Pfield : {}", saleDTO);
+            Sale sale = saleMapper.toEntity(saleDTO);
+            sale = saleRepository.save(sale);
+        
+        	
+        }
+
+        InvoiceDTO iMtoDTO = invoiceMapper.toDto(invoice) ;
+        
+       
+        
+        return iMtoDTO;
+        
+        
+      
     }
 
     /**
@@ -84,7 +122,19 @@ public class InvoiceService {
      */
     public List<InvoiceDTO> findAll() {
         log.debug("Request to get all Invoices");
-        return invoiceRepository.findAll().stream().map(invoiceMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+        
+      System.out.print("invoice-----------------"+invoiceRepository.findAll());
+     
+      List<InvoiceDTO> lidto = invoiceRepository.findAll().stream().map(invoiceMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+      
+      
+      for (int i=0; i < lidto.size(); i++)
+      {
+      	lidto.get(i).setSales(saleRepository.findAllByInvoice(invoiceMapper.toEntity(lidto.get(i))));
+      }
+      return lidto;
+              
+       
     }
 
     /**
@@ -102,9 +152,21 @@ public class InvoiceService {
      * @param id the id of the entity.
      * @return the entity.
      */
-    public Optional<InvoiceDTO> findOne(String id) {
+    public InvoiceDTO findOne(String id) {
         log.debug("Request to get Invoice : {}", id);
-        return invoiceRepository.findOneWithEagerRelationships(id).map(invoiceMapper::toDto);
+        
+        InvoiceDTO idto = invoiceRepository.findById(id).map(invoiceMapper::toDto).get();
+       
+        Invoice i = invoiceRepository.findById(id).get();
+        
+        idto.setSales(saleRepository.findAllByInvoice(i));
+    
+        return idto;
+    
+    
+    
+    
+    
     }
 
     /**

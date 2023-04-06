@@ -28,4 +28,8 @@ public interface SaleMapper extends EntityMapper<SaleDTO, Sale> {
     @Mapping(target = "id", source = "id")
     @Mapping(target = "code", source = "code")
     InvoiceDTO toDtoInvoiceCode(Invoice invoice);
+    
+    
+    
+    
 }

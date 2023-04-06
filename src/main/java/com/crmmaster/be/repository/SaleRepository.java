@@ -1,6 +1,9 @@
 package com.crmmaster.be.repository;
 
+import com.crmmaster.be.domain.Invoice;
 import com.crmmaster.be.domain.Sale;
+import com.crmmaster.be.service.dto.SaleDTO;
+
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -14,7 +17,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SaleRepository extends MongoRepository<Sale, String> {
-    @Query("{}")
+   @Query("{}")
     Page<Sale> findAllWithEagerRelationships(Pageable pageable);
 
     @Query("{}")
@@ -23,6 +26,6 @@ public interface SaleRepository extends MongoRepository<Sale, String> {
     @Query("{'id': ?0}")
     Optional<Sale> findOneWithEagerRelationships(String id);
     
-    
+    List<SaleDTO>findAllByInvoice(Invoice invoice);
     
 }

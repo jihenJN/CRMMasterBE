@@ -1,5 +1,6 @@
 package com.crmmaster.be.service;
 
+import com.crmmaster.be.domain.Invoice;
 import com.crmmaster.be.domain.Sale;
 import com.crmmaster.be.repository.SaleRepository;
 import com.crmmaster.be.service.dto.SaleDTO;
@@ -87,6 +88,32 @@ public class SaleService {
         return saleRepository.findAll().stream().map(saleMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
+    
+    
+    
+    
+    /**
+     * Get all the sales.
+     *
+     * @return the list of entities.
+     */
+    public List<SaleDTO> findAllByInvoice(Invoice invoice) {
+        log.debug("Request to get all Sales");
+        System.out.print("findAllByInvoice-----------------"+invoice);
+        System.out.print("saleRepository.findAllByInvoice-----------------"+ saleRepository.findAllByInvoice(invoice));
+        return saleRepository.findAllByInvoice(invoice);
+        
+       
+    }    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * Get all the sales with eager load of many-to-many relationships.
      *

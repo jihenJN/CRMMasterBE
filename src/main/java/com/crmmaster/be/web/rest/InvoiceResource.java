@@ -153,7 +153,8 @@ public class InvoiceResource {
     @GetMapping("/invoices/{id}")
     public ResponseEntity<InvoiceDTO> getInvoice(@PathVariable String id) {
         log.debug("REST request to get Invoice : {}", id);
-        Optional<InvoiceDTO> invoiceDTO = invoiceService.findOne(id);
+  
+        Optional<InvoiceDTO> invoiceDTO = Optional.ofNullable(invoiceService.findOne(id));
         return ResponseUtil.wrapOrNotFound(invoiceDTO);
     }
 

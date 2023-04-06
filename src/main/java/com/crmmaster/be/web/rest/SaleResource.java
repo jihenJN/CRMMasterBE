@@ -140,6 +140,10 @@ public class SaleResource {
         return saleService.findAll();
     }
 
+    
+    
+    
+    
     /**
      * {@code GET  /sales/:id} : get the "id" sale.
      *
