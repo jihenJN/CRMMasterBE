@@ -169,13 +169,32 @@ public class InvoiceService {
     
     }
 
+ 
+ /*******************JN MODIFY DELETE INTO DELETE CASCADE BETWEEN INVOICE AND SALES*******/
+    
     /**
      * Delete the invoice by id.
      *
      * @param id the id of the entity.
      */
     public void delete(String id) {
-        log.debug("Request to delete Invoice : {}", id);
-        invoiceRepository.deleteById(id);
+    	log.debug("Request to delete Invoice : {}", id);
+
+        // Find the invoice by ID
+        Optional<Invoice> invoiceOptional = invoiceRepository.findById(id);
+
+        if (invoiceOptional.isPresent()) {
+            Invoice invoice = invoiceOptional.get();
+
+            // Delete the associated sales
+            List<SaleDTO> sales = saleRepository.findAllByInvoice(invoice);
+            for (SaleDTO saleDTO : sales) {
+                saleRepository.deleteById(saleDTO.getId());
+            }
+
+            // Delete the invoice
+            invoiceRepository.deleteById(id);
+        }
+       
     }
 }
