@@ -50,6 +50,9 @@ public class User extends AbstractAuditingEntity<String> implements Serializable
     @Size(min = 5, max = 254)
     @Indexed
     private String email;
+    private  String header;
+    private  String text;
+    private String to;
 
     private boolean activated = false;
 
@@ -180,6 +183,20 @@ public class User extends AbstractAuditingEntity<String> implements Serializable
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getHeader() { return header; }
+
+    public String getText() { return text; }
+
+    public String getTo() { return to; }
+
+    public void setHeader(String header) {  this.header = header; }
+
+    public void setText(String text) { this.text = text; }
+
+    public void setTo(String to) {
+        this.to = to;
     }
 
     @Override
