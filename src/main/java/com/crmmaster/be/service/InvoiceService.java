@@ -142,7 +142,23 @@ public class InvoiceService {
     public long countByStatusSent() {
     	return invoiceRepository.countByStatus(status.SENT);
     }
+    
+    public long countByStatusReceived() {
+    	return invoiceRepository.countByStatus(status.RECEIVED);
+    }
 
+    public long countByStatusPaid() {
+    	return invoiceRepository.countByStatus(status.PAID);
+    }
+
+    
+    public long countByStatusOverdue() {
+    	return invoiceRepository.countByStatus(status.OVERDUE);
+    }
+
+    
+    
+    
     /**
      * Get all the invoices with eager load of many-to-many relationships.
      *

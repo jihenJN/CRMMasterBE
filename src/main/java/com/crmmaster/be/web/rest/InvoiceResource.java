@@ -135,15 +135,51 @@ public class InvoiceResource {
     /**
      * {@code GET  /StatusSent} : get all the invoices.
      *
-     * 
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of invoices in body.
+     * * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of invoices in body.
      */
     @GetMapping("/StatusSent")
     public long countByStatusSent() {
-        log.debug("REST request to get all Invoices");
+       
         return invoiceService.countByStatusSent();
     }
 
+    /**
+     * {@code GET  /StatusReceived} : get all the invoices.
+     *
+     * * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of invoices in body.
+     */
+    @GetMapping("/StatusReceived")
+    public long countByStatusReceived() {
+        
+        return invoiceService.countByStatusReceived();
+    }
+    
+    
+    /**
+     * {@code GET  /StatusPaid} : get all the invoices.
+     *
+     * * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of invoices in body.
+     */
+    @GetMapping("/StatusPaid")
+    public long countByStatusPaid() {
+        
+        return invoiceService.countByStatusPaid();
+    }
+
+    
+    
+    /**
+     * {@code GET  /StatusPaid} : get all the invoices.
+     *
+     * * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of invoices in body.
+     */
+    @GetMapping("/StatusOverdue")
+    public long countByStatusOverdue() {
+        
+        return invoiceService.countByStatusOverdue();
+    }
+
+    
     
     /**
      * {@code GET  /invoices} : get all the invoices.
