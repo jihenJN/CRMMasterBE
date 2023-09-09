@@ -2,6 +2,7 @@ package com.crmmaster.be.service;
 
 import com.crmmaster.be.domain.Invoice;
 import com.crmmaster.be.domain.Sale;
+import com.crmmaster.be.domain.enumeration.status;
 import com.crmmaster.be.repository.InvoiceRepository;
 import com.crmmaster.be.repository.SaleRepository;
 import com.crmmaster.be.service.dto.InvoiceDTO;
@@ -135,6 +136,11 @@ public class InvoiceService {
       return lidto;
               
        
+    }
+    
+    
+    public long countByStatusSent() {
+    	return invoiceRepository.countByStatus(status.SENT);
     }
 
     /**

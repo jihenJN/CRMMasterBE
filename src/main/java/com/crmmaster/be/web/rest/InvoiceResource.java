@@ -133,6 +133,19 @@ public class InvoiceResource {
     }
 
     /**
+     * {@code GET  /StatusSent} : get all the invoices.
+     *
+     * 
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of invoices in body.
+     */
+    @GetMapping("/StatusSent")
+    public long countByStatusSent() {
+        log.debug("REST request to get all Invoices");
+        return invoiceService.countByStatusSent();
+    }
+
+    
+    /**
      * {@code GET  /invoices} : get all the invoices.
      *
      * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
@@ -143,7 +156,8 @@ public class InvoiceResource {
         log.debug("REST request to get all Invoices");
         return invoiceService.findAll();
     }
-
+    
+    
     /**
      * {@code GET  /invoices/:id} : get the "id" invoice.
      *

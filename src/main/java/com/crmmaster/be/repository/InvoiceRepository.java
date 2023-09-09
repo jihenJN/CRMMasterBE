@@ -1,6 +1,8 @@
 package com.crmmaster.be.repository;
 
 import com.crmmaster.be.domain.Invoice;
+import com.crmmaster.be.domain.enumeration.status;
+
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -22,4 +24,6 @@ public interface InvoiceRepository extends MongoRepository<Invoice, String> {
 
     @Query("{'id': ?0}")
     Optional<Invoice> findOneWithEagerRelationships(String id);
+    
+    long countByStatus(status status);
 }
