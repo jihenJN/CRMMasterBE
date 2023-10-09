@@ -83,6 +83,8 @@ public class InvoiceService {
       
     }
 
+   /****************************************************************/
+    
     /**
      * Update a invoice.
      *
@@ -91,11 +93,40 @@ public class InvoiceService {
      */
     public InvoiceDTO update(InvoiceDTO invoiceDTO) {
         log.debug("Request to update Invoice : {}", invoiceDTO);
-        Invoice invoice = invoiceMapper.toEntity(invoiceDTO);
-        invoice = invoiceRepository.save(invoice);
-        return invoiceMapper.toDto(invoice);
-    }
 
+        // Find the existing invoice by ID
+        Optional<Invoice> existingInvoiceOptional = invoiceRepository.findById(invoiceDTO.getId());
+
+        Invoice existingInvoice = invoiceMapper.toEntity(invoiceDTO);
+        
+            // Clear existing sales associated with the invoice
+            List<SaleDTO> existingSales = saleRepository.findAllByInvoice(existingInvoice);
+            for (SaleDTO existingSaleDTO : existingSales) {
+                saleRepository.deleteById(existingSaleDTO.getId());
+            }
+
+            // Add or update sales associated with the invoice
+            for (SaleDTO saleDTO : invoiceDTO.getSales()) {
+                saleDTO.setInvoice(invoiceMapper.toDto(existingInvoice));
+                log.debug("Request to save Sale : {}", saleDTO);
+                Sale sale = saleMapper.toEntity(saleDTO);
+                sale = saleRepository.save(sale);
+            }
+
+            // Save the updated invoice
+            existingInvoice = invoiceRepository.save(existingInvoice);
+
+            return invoiceMapper.toDto(existingInvoice);
+      
+    }
+/*************************************************************************/
+    
+    
+    
+    
+    
+    
+    
     /**
      * Partially update a invoice.
      *
